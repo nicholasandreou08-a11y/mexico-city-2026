@@ -131,7 +131,6 @@
   // ─── STATE ───────────────────────────
   let currentLang = 'en';
   let isLiveMode = false;
-  let liveModeOverride = false;
   let completedDays = JSON.parse(localStorage.getItem('mx2026_completed') || '[]');
   let weatherPayload = null;
 
@@ -143,7 +142,6 @@
   const countHours = document.getElementById('countHours');
   const countMinutes = document.getElementById('countMinutes');
   const countSeconds = document.getElementById('countSeconds');
-  const liveModeCheckbox = document.getElementById('liveModeOverride');
   const footerSignature = document.getElementById('footerSignature');
   const particleCanvas = document.getElementById('particleCanvas');
   const ctx = particleCanvas.getContext('2d');
@@ -222,7 +220,7 @@
 
   function updateCountdown() {
     const now = getMexicoCityNow();
-    const isTrip = (now >= TRIP_START && now <= TRIP_END) || liveModeOverride;
+    const isTrip = (now >= TRIP_START && now <= TRIP_END);
 
     if (isTrip !== isLiveMode) {
       isLiveMode = isTrip;
@@ -261,12 +259,6 @@
     }
   }
 
-  // Live mode override toggle
-  liveModeCheckbox.addEventListener('change', () => {
-    liveModeOverride = liveModeCheckbox.checked;
-    updateCountdown();
-  });
-
   // Start countdown
   updateCountdown();
   setInterval(updateCountdown, 1000);
@@ -294,8 +286,6 @@
   function getCurrentActivity() {
     let dayNum = getCurrentTripDay();
 
-    // When override is active but outside trip dates, demo with Day 2
-    if (dayNum === null && liveModeOverride) dayNum = 2;
     if (dayNum === null) return null;
 
     const schedule = DAILY_SCHEDULE[dayNum];
