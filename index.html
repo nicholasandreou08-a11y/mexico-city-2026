@@ -3,13 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mexico City 2026</title>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Andreou Family — Mexico City 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- Password Gate -->
+  <div id="passwordGate" style="display:none; position:fixed; inset:0; z-index:99999; background:#0e3b43; align-items:center; justify-content:center; flex-direction:column; font-family:'Inter',sans-serif;">
+    <div style="text-align:center; max-width:340px; padding:2rem;">
+      <div style="font-size:2.5rem; margin-bottom:1rem;">🔒</div>
+      <h2 style="color:#f4e8d8; font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; margin-bottom:0.5rem;">Andreou Family Trip</h2>
+      <p style="color:rgba(244,232,216,0.6); font-size:0.8rem; margin-bottom:1.5rem;">This trip is private. Enter the family password.</p>
+      <input id="passwordInput" type="password" placeholder="Password" autocomplete="off" style="width:100%; padding:0.75rem 1rem; border:1px solid rgba(244,232,216,0.2); border-radius:8px; background:rgba(244,232,216,0.08); color:#f4e8d8; font-size:0.9rem; outline:none; text-align:center; font-family:'Inter',sans-serif; box-sizing:border-box;">
+      <p id="passwordError" style="color:#c65d3b; font-size:0.75rem; margin-top:0.75rem; opacity:0;"></p>
+    </div>
+  </div>
+  <script>
+  (function() {
+    var KEY = 'Andreou2026';
+    var params = new URLSearchParams(window.location.search);
+    var urlKey = params.get('key');
+    if (urlKey === KEY || sessionStorage.getItem('mx_auth') === KEY) {
+      sessionStorage.setItem('mx_auth', KEY);
+      return; // bypass gate
+    }
+    var gate = document.getElementById('passwordGate');
+    gate.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    var inp = document.getElementById('passwordInput');
+    var err = document.getElementById('passwordError');
+    inp.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        if (inp.value === KEY) {
+          sessionStorage.setItem('mx_auth', KEY);
+          gate.style.display = 'none';
+          document.body.style.overflow = '';
+        } else {
+          err.textContent = 'Wrong password. Try again.';
+          err.style.opacity = '1';
+          inp.value = '';
+          inp.focus();
+        }
+      }
+    });
+    inp.focus();
+  })();
+  </script>
 
   <!-- Floating Marigold Petals -->
   <div class="marigold-petal" style="--x: 8%; --delay: 0s; --duration: 18s;"></div>
@@ -78,9 +121,9 @@
         <span data-en="Mexico City" data-gr="Πόλη του Μεξικού">Mexico City</span>
         <span class="hero-year">2026</span>
       </h1>
-      <p class="hero-subtitle" data-en="Ancient Empires. Sacred Shrines. Floating Gardens." data-gr="Αρχαίες Αυτοκρατορίες. Ιερά Προσκυνήματα. Πλωτοί Κήποι.">Ancient Empires. Sacred Shrines. Floating Gardens.</p>
+      <p class="hero-subtitle" data-en="The Andreou Family Trip" data-gr="Το Ταξίδι της Οικογένειας Ανδρέου">The Andreou Family Trip</p>
       <p class="hero-dates" data-en="February 21–28" data-gr="21–28 ΦΕΒΡΟΥΑΡΙΟΥ">February 21–28</p>
-      <p class="hero-description" data-en="A family journey through history, faith, art and flavor." data-gr="Ένα οικογενειακό ταξίδι στην ιστορία, την πίστη, την τέχνη και τις γεύσεις.">A family journey through history, faith, art and flavor.</p>
+      <p class="hero-description" data-en="Nick, Steph, Lenia &amp; Andreas — eight days of history, food, and adventure." data-gr="Nick, Steph, Lenia &amp; Andreas — οκτώ μέρες ιστορίας, γεύσεων και περιπέτειας.">Nick, Steph, Lenia &amp; Andreas — eight days of history, food, and adventure.</p>
 
       <!-- Countdown -->
       <div class="countdown" id="countdown">
@@ -132,7 +175,7 @@
       <span class="section-emoji">&#9992;&#65039;</span>
       <h2 class="section-title" data-en="The Journey" data-gr="Το Ταξίδι">The Journey</h2>
       <div class="journey-intro">
-        <p data-en="Eight days in one of the world's great civilizational crossroads. From the ruins of Tenochtitlan to the floating gardens of Xochimilco, from sacred shrines to contemporary art — Mexico City is a living palimpsest." data-gr="Οκτώ μέρες σε ένα από τα μεγαλύτερα πολιτισμικά σταυροδρόμια του κόσμου. Από τα ερείπια του Τενοτστιτλάν στους πλωτούς κήπους του Xochimilco, από ιερά προσκυνήματα στη σύγχρονη τέχνη — η Πόλη του Μεξικού είναι ένα ζωντανό παλίμψηστο.">Eight days in one of the world's great civilizational crossroads. From the ruins of Tenochtitlan to the floating gardens of Xochimilco, from sacred shrines to contemporary art — Mexico City is a living palimpsest.</p>
+        <p data-en="The Andreou family is heading to Mexico City. Eight days in one of the world's great civilizational crossroads — ancient empires, floating gardens, sacred shrines, and enough tacos to keep Andreas and Steph very, very happy." data-gr="Η οικογένεια Ανδρέου πάει Πόλη του Μεξικού. Οκτώ μέρες σε ένα από τα μεγαλύτερα πολιτισμικά σταυροδρόμια του κόσμου — αρχαίες αυτοκρατορίες, πλωτοί κήποι, ιερά προσκυνήματα, και αρκετά tacos για να κρατήσουν τον Andreas και τη Steph πολύ, πολύ χαρούμενους.">The Andreou family is heading to Mexico City. Eight days in one of the world's great civilizational crossroads — ancient empires, floating gardens, sacred shrines, and enough tacos to keep Andreas and Steph very, very happy.</p>
       </div>
 
       <!-- Expanded Flight Cabin Cards -->
@@ -152,7 +195,7 @@
             <span class="flight-expand-icon">+</span>
           </div>
           <div class="flight-card-body">
-            <p class="flight-cabin-intro" data-en="We start in the Concorde Room at Heathrow with private check-in and a five-star pre-boarding lunch. British Airways First makes the flight part of the trip — champagne, calm, and comfort at 35,000 feet." data-gr="Ξεκινάμε στην Concorde Room στο Heathrow με ιδιωτικό check-in και ένα πεντάστερο γεύμα πριν την επιβίβαση. Η British Airways First κάνει την πτήση μέρος του ταξιδιού — σαμπάνια, ηρεμία και άνεση στα 35.000 πόδια.">We start in the Concorde Room at Heathrow with private check-in and a five-star pre-boarding lunch. British Airways First makes the flight part of the trip — champagne, calm, and comfort at 35,000 feet.</p>
+            <p class="flight-cabin-intro" data-en="Lenia, this one's for you. Only 8 passengers in the entire cabin — our own private world at 35,000 feet. Proper toilets (clean ones, we promise), lie-flat suites, and zero chaos. We start in the Concorde Room at Heathrow — private check-in and a five-star lunch before we even board. Andreas, the champagne is complimentary and the flight is 12 hours. You know what to do." data-gr="Λένια, αυτό είναι για σένα. Μόνο 8 επιβάτες σε ολόκληρη την καμπίνα — ο δικός μας ιδιωτικός κόσμος στα 35.000 πόδια. Κανονικές τουαλέτες (καθαρές, υποσχόμαστε), σουίτες με κρεβάτι, και μηδέν χάος. Ξεκινάμε στην Concorde Room στο Heathrow — ιδιωτικό check-in και πεντάστερο γεύμα πριν καν επιβιβαστούμε. Andreas, η σαμπάνια είναι δωρεάν και η πτήση 12 ώρες. Ξέρεις τι να κάνεις.">Lenia, this one's for you. Only 8 passengers in the entire cabin — our own private world at 35,000 feet. Proper toilets (clean ones, we promise), lie-flat suites, and zero chaos. We start in the Concorde Room at Heathrow — private check-in and a five-star lunch before we even board. Andreas, the champagne is complimentary and the flight is 12 hours. You know what to do.</p>
             <div class="cabin-amenities">
               <div class="amenity-item">
                 <span class="amenity-icon">&#128716;</span>
@@ -197,7 +240,7 @@
             <span class="flight-expand-icon">+</span>
           </div>
           <div class="flight-card-body">
-            <p class="flight-cabin-intro" data-en="A smooth overnight home in Club World — lie-flat sleep, soft lighting, and quiet cabin time. One last lounge moment before departure, then wake up on approach to London." data-gr="Ομαλή νυχτερινή επιστροφή με Club World — κρεβάτι που γίνεται flat, απαλός φωτισμός και ήσυχος χρόνος στην καμπίνα. Ένα τελευταίο lounge πριν την αναχώρηση, και ξύπνημα στην προσέγγιση προς Λονδίνο.">A smooth overnight home in Club World — lie-flat sleep, soft lighting, and quiet cabin time. One last lounge moment before departure, then wake up on approach to London.</p>
+            <p class="flight-cabin-intro" data-en="The journey home — lie-flat beds, soft lighting, and a quiet cabin to sleep off a week of exploring. Lenia, same deal: proper seats, clean space, no stress. Steph and Andreas, one last round from the Club Kitchen before you pass out. Nick will be asleep before takeoff." data-gr="Το ταξίδι της επιστροφής — κρεβάτια flat, απαλός φωτισμός, και ήσυχη καμπίνα για ύπνο μετά από μια εβδομάδα εξερευνήσεων. Λένια, ίδια φάση: σωστά καθίσματα, καθαρός χώρος, μηδέν στρες. Steph και Andreas, ένα τελευταίο γεύμα από το Club Kitchen πριν σας πάρει ο ύπνος. Ο Nick θα κοιμάται πριν καν απογειωθούμε.">The journey home — lie-flat beds, soft lighting, and a quiet cabin to sleep off a week of exploring. Lenia, same deal: proper seats, clean space, no stress. Steph and Andreas, one last round from the Club Kitchen before you pass out. Nick will be asleep before takeoff.</p>
             <div class="cabin-amenities">
               <div class="amenity-item">
                 <span class="amenity-icon">&#128716;</span>
@@ -839,7 +882,7 @@
     <div class="container">
       <span class="section-emoji">&#127798;&#65039;</span>
       <h2 class="section-title" data-en="Dining" data-gr="Γεύσεις">Dining</h2>
-      <p class="section-intro" data-en="One confirmed reservation and our top picks for each day. Suggestions are marked with 💡 — book ahead where possible." data-gr="Μία επιβεβαιωμένη κράτηση και οι κορυφαίες μας επιλογές για κάθε μέρα. Οι προτάσεις σημειώνονται με 💡 — κλείστε εγκαίρως όπου μπορείτε.">One confirmed reservation and our top picks for each day. Suggestions are marked with 💡 — book ahead where possible.</p>
+      <p class="section-intro" data-en="Andreas and Steph — this is your section. Nick and Lenia have given up trying to control the food budget. Eat everything. One confirmed reservation and our top picks for each day. Suggestions marked with 💡." data-gr="Andreas και Steph — αυτή η ενότητα είναι δική σας. Ο Nick και η Lenia παράτησαν να ελέγχουν το budget φαγητού. Φάτε τα πάντα. Μία επιβεβαιωμένη κράτηση και οι κορυφαίες μας επιλογές για κάθε μέρα. Οι προτάσεις σημειώνονται με 💡.">Andreas and Steph — this is your section. Nick and Lenia have given up trying to control the food budget. Eat everything. One confirmed reservation and our top picks for each day. Suggestions marked with 💡.</p>
 
       <h3 class="dining-subtitle" data-en="Reserved" data-gr="Κρατημένα">Reserved</h3>
       <div class="restaurant-grid">
@@ -1705,7 +1748,7 @@
   <section id="reflection" class="section reflection">
     <div class="container">
       <div class="reflection-content">
-        <blockquote class="reflection-quote" data-en="From empire to revolution to modern metropolis, Mexico City reveals its layers. We return home carrying its colors and stories." data-gr="Από αυτοκρατορία σε επανάσταση και σύγχρονη μητρόπολη, η Πόλη του Μεξικού αποκαλύπτει τα στρώματά της. Επιστρέφουμε σπίτι κουβαλώντας τα χρώματα και τις ιστορίες της.">From empire to revolution to modern metropolis, Mexico City reveals its layers. We return home carrying its colors and stories.</blockquote>
+        <blockquote class="reflection-quote" data-en="Four Andreous, one ancient city, and a week we'll never forget. We came for the history and stayed for the tacos. Mexico City, you were everything." data-gr="Τέσσερις Ανδρέου, μια αρχαία πόλη, και μια εβδομάδα που δεν θα ξεχάσουμε ποτέ. Ήρθαμε για την ιστορία και μείναμε για τα tacos. Πόλη του Μεξικού, ήσουν ό,τι περιμέναμε και παραπάνω.">Four Andreous, one ancient city, and a week we'll never forget. We came for the history and stayed for the tacos. Mexico City, you were everything.</blockquote>
       </div>
     </div>
   </section>
@@ -1714,7 +1757,7 @@
   <!-- FOOTER -->
   <!-- ═══════════════════════════════════════ -->
   <footer class="site-footer">
-    <p class="footer-signature" id="footerSignature" data-en="Built with curiosity and good mezcal." data-gr="Χτισμένο με περιέργεια και καλό mezcal.">Built with curiosity and good mezcal.</p>
+    <p class="footer-signature" id="footerSignature" data-en="Made for the Andreous, with love and too much mezcal." data-gr="Για τους Ανδρέου, με αγάπη και υπερβολικό mezcal.">Made for the Andreous, with love and too much mezcal.</p>
   </footer>
 
   <!-- Activity Bar (sticky bottom, live mode only) -->
