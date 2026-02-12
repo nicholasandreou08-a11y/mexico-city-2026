@@ -344,6 +344,12 @@
   // TIMELINE INTERACTIONS
   // ═══════════════════════════════════════
 
+  function scrollToExpanded(el) {
+    setTimeout(() => {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 150);
+  }
+
   // Expand/collapse timeline items
   document.querySelectorAll('.timeline-header').forEach(header => {
     header.addEventListener('click', () => {
@@ -356,6 +362,7 @@
       });
 
       item.classList.toggle('expanded', !wasExpanded);
+      if (!wasExpanded) scrollToExpanded(item);
     });
 
     header.addEventListener('keydown', (e) => {
@@ -424,6 +431,7 @@
       });
 
       module.classList.toggle('expanded', !wasExpanded);
+      if (!wasExpanded) scrollToExpanded(module);
     });
 
     header.addEventListener('keydown', (e) => {
@@ -449,6 +457,7 @@
       });
 
       card.classList.toggle('expanded', !wasExpanded);
+      if (!wasExpanded) scrollToExpanded(card);
     });
   });
 
@@ -497,6 +506,7 @@
       });
 
       item.classList.toggle('active', !wasActive);
+      if (!wasActive) scrollToExpanded(item);
     });
 
     header.addEventListener('keydown', (e) => {
@@ -882,11 +892,16 @@
   }
 
   function rotateSunsetFact() {
-    sunsetFactIndex = (sunsetFactIndex + 1) % SUNSET_FACTS.length;
-    renderSunsetFact();
+    sunsetFact.style.opacity = '0';
+    setTimeout(() => {
+      sunsetFactIndex = (sunsetFactIndex + 1) % SUNSET_FACTS.length;
+      renderSunsetFact();
+      sunsetFact.style.opacity = '1';
+    }, 400);
   }
 
   if (sunsetFact) {
+    sunsetFact.style.transition = 'opacity 0.4s ease';
     renderSunsetFact();
     setInterval(rotateSunsetFact, 6000);
   }
