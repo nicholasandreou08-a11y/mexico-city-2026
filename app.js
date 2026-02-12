@@ -345,9 +345,13 @@
   // ═══════════════════════════════════════
 
   function scrollToExpanded(el) {
+    // Wait for other accordion items to finish collapsing (max-height 0.5s)
+    // then calculate final position and scroll there with offset
     setTimeout(() => {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 150);
+      const rect = el.getBoundingClientRect();
+      const offset = window.pageYOffset + rect.top - 16;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+    }, 500);
   }
 
   // Expand/collapse timeline items
