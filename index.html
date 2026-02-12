@@ -19,6 +19,7 @@
       <h2 style="color:#f4e8d8; font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; margin-bottom:0.5rem;">Andreou Family Trip</h2>
       <p style="color:rgba(244,232,216,0.6); font-size:0.8rem; margin-bottom:1.5rem;">This trip is private. Enter the family password.</p>
       <input id="passwordInput" type="password" placeholder="Password" autocomplete="off" style="width:100%; padding:0.75rem 1rem; border:1px solid rgba(244,232,216,0.2); border-radius:8px; background:rgba(244,232,216,0.08); color:#f4e8d8; font-size:0.9rem; outline:none; text-align:center; font-family:'Inter',sans-serif; box-sizing:border-box;">
+      <button id="passwordSubmit" style="width:100%; margin-top:0.75rem; padding:0.75rem 1rem; border:none; border-radius:8px; background:#e3a72f; color:#0e3b43; font-size:0.85rem; font-weight:600; font-family:'Inter',sans-serif; cursor:pointer; letter-spacing:0.03em;">Enter</button>
       <p id="passwordError" style="color:#c65d3b; font-size:0.75rem; margin-top:0.75rem; opacity:0;"></p>
     </div>
   </div>
@@ -35,21 +36,24 @@
     gate.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     var inp = document.getElementById('passwordInput');
+    var btn = document.getElementById('passwordSubmit');
     var err = document.getElementById('passwordError');
-    inp.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        if (inp.value === KEY) {
-          sessionStorage.setItem('mx_auth', KEY);
-          gate.style.display = 'none';
-          document.body.style.overflow = '';
-        } else {
-          err.textContent = 'Wrong password. Try again.';
-          err.style.opacity = '1';
-          inp.value = '';
-          inp.focus();
-        }
+    function tryPassword() {
+      if (inp.value === KEY) {
+        sessionStorage.setItem('mx_auth', KEY);
+        gate.style.display = 'none';
+        document.body.style.overflow = '';
+      } else {
+        err.textContent = 'Wrong password. Try again.';
+        err.style.opacity = '1';
+        inp.value = '';
+        inp.focus();
       }
+    }
+    inp.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') tryPassword();
     });
+    btn.addEventListener('click', tryPassword);
     inp.focus();
   })();
   </script>
