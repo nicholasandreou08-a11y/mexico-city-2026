@@ -863,6 +863,110 @@
         en: 'The Angel of Independence stands 45\u00A0metres tall on Paseo de la Reforma. The golden winged victory weighs 7\u00A0tonnes \u2014 the city\u2019s most iconic landmark.',
         gr: 'Ο Άγγελος της Ανεξαρτησίας υψώνεται 45\u00A0μέτρα στο Paseo de la Reforma. Η χρυσή φτερωτή νίκη ζυγίζει 7\u00A0τόνους \u2014 το πιο εμβληματικό σημείο της πόλης.'
       }
+    },
+    {
+      icon: '\u{1F30B}', accent: '#6b4c3b',
+      title: { en: 'Ring of Volcanoes', gr: 'Δαχτυλίδι Ηφαιστείων' },
+      text: {
+        en: 'Mexico City sits between two active volcanoes \u2014 Popocat\u00E9petl and Iztacc\u00EDhuatl. \u201CPopo\u201D last erupted in 2023 and is only 70\u00A0km from the city centre.',
+        gr: 'Η Πόλη του Μεξικού βρίσκεται ανάμεσα σε δύο ενεργά ηφαίστεια \u2014 Popocat\u00E9petl και Iztacc\u00EDhuatl. Το \u00ABPopo\u00BB εξερράγη τελευταία φορά το 2023, μόλις 70\u00A0χλμ. από το κέντρο.'
+      }
+    },
+    {
+      icon: '\u{1F3B6}', accent: '#c44d58',
+      title: { en: 'Mariachi Origins', gr: 'Η Γέννηση του Mariachi' },
+      text: {
+        en: 'Plaza Garibaldi is the spiritual home of mariachi music. Every night, hundreds of musicians in silver-studded trajes de charro gather to play for tips and serenades.',
+        gr: 'Η Plaza Garibaldi είναι η πνευματική πατρίδα της μουσικής mariachi. Κάθε βράδυ, εκατοντάδες μουσικοί με ασημένια trajes de charro μαζεύονται να παίξουν.'
+      }
+    },
+    {
+      icon: '\u{1F48E}', accent: '#3a7ca5',
+      title: { en: 'Floating Gardens', gr: 'Πλωτοί Κήποι' },
+      text: {
+        en: 'The chinampas of Xochimilco are \u201Cfloating gardens\u201D built by the Aztecs. Still farmed today, they\u2019re a UNESCO World Heritage Site and one of the last traces of the ancient lake system.',
+        gr: 'Τα chinampas του Xochimilco είναι \u00ABπλωτοί κήποι\u00BB που έφτιαξαν οι Αζτέκοι. Καλλιεργούνται ακόμα, είναι Μνημείο UNESCO και απομεινάρι του αρχαίου συστήματος λιμνών.'
+      }
+    },
+    {
+      icon: '\u{1F4DA}', accent: '#5c6d3f',
+      title: { en: 'Library of Light', gr: 'Βιβλιοθήκη Φωτός' },
+      text: {
+        en: 'The Biblioteca Vasconcelos is nicknamed the \u201CMega Library.\u201D It holds 580,000 books on suspended steel shelving that seems to float in mid-air across a cathedral-like space.',
+        gr: 'Η Biblioteca Vasconcelos αποκαλείται \u00ABMega Library.\u00BB Φιλοξενεί 580.000 βιβλία σε αιωρούμενα ράφια που μοιάζουν να πετούν μέσα σε χώρο σαν καθεδρικό ναό.'
+      }
+    },
+    {
+      icon: '\u{1F9F1}', accent: '#a0522d',
+      title: { en: 'Palacio de Bellas Artes', gr: 'Palacio de Bellas Artes' },
+      text: {
+        en: 'The Palace of Fine Arts took 30\u00A0years to build and is so heavy it has sunk over 4\u00A0metres into the soft lake bed. Its Art Deco interior houses Rivera\u2019s famous mural \u201CMan at the Crossroads.\u201D',
+        gr: 'Το Παλάτι Καλών Τεχνών χρειάστηκε 30\u00A0χρόνια να χτιστεί και είναι τόσο βαρύ που έχει βυθιστεί 4\u00A0μέτρα. Στο Art Deco εσωτερικό φιλοξενείται η τοιχογραφία του Rivera \u00ABMan at the Crossroads.\u00BB'
+      }
+    },
+    {
+      icon: '\u{1F697}', accent: '#607d8b',
+      title: { en: 'City of Traffic', gr: 'Πόλη της Κίνησης' },
+      text: {
+        en: 'Mexico City has roughly 6\u00A0million registered cars. Drivers spend an average of 218\u00A0hours per year stuck in traffic \u2014 making it one of the most congested cities in the world.',
+        gr: 'Η Πόλη του Μεξικού έχει περίπου 6\u00A0εκατομμύρια αυτοκίνητα. Οι οδηγοί χάνουν κατά μέσο όρο 218\u00A0ώρες τον χρόνο στην κίνηση \u2014 μία από τις πιο μποτιλιαρισμένες πόλεις παγκοσμίως.'
+      }
+    },
+    {
+      icon: '\u{1F36B}', accent: '#6d4c41',
+      title: { en: 'Birthplace of Chocolate', gr: 'Γενέτειρα της Σοκολάτας' },
+      text: {
+        en: 'The Aztecs drank xocol\u0101tl \u2014 a bitter cacao drink with chilli and vanilla. The word \u201Cchocolate\u201D comes from Nahuatl. Mexico remains one of the world\u2019s top cacao producers.',
+        gr: 'Οι Αζτέκοι έπιναν xocol\u0101tl \u2014 ένα πικρό ρόφημα κακάο με τσίλι και βανίλια. Η λέξη \u00ABchocolate\u00BB προέρχεται από τα Ναουάτλ. Το Μεξικό παραμένει κορυφαίος παραγωγός κακάο.'
+      }
+    },
+    {
+      icon: '\u{1F3DF}\uFE0F', accent: '#37474f',
+      title: { en: 'Azteca Stadium', gr: 'Γήπεδο Azteca' },
+      text: {
+        en: 'Estadio Azteca is the only stadium to have hosted two FIFA World Cup finals (1970 and 1986). It seats 87,000 and is where Maradona scored the legendary \u201CHand of God\u201D goal.',
+        gr: 'Το Estadio Azteca είναι το μόνο γήπεδο που φιλοξένησε δύο τελικούς Παγκοσμίου Κυπέλλου (1970 και 1986). Χωρά 87.000 θεατές και εκεί ο Μαραντόνα σκόραρε το \u00ABΧέρι του Θεού.\u00BB'
+      }
+    },
+    {
+      icon: '\u{1F480}', accent: '#9c27b0',
+      title: { en: 'D\u00EDa de los Muertos', gr: 'Ημέρα των Νεκρών' },
+      text: {
+        en: 'Day of the Dead (1\u20132 November) is not morbid \u2014 it\u2019s a joyful celebration. Families build ofrendas with marigolds, sugar skulls, and the favourite foods of their departed loved ones.',
+        gr: 'Η Ημέρα των Νεκρών (1\u20132 Νοεμβρίου) δεν είναι μακάβρια \u2014 είναι χαρούμενη γιορτή. Οι οικογένειες φτιάχνουν ofrendas με κατιφέδες, ζαχαρωτά κρανία και τα αγαπημένα φαγητά των νεκρών τους.'
+      }
+    },
+    {
+      icon: '\u{1F3E0}', accent: '#00838f',
+      title: { en: 'Casa Azul', gr: 'Casa Azul' },
+      text: {
+        en: 'Frida Kahlo was born, lived, and died in the cobalt-blue \u201CCasa Azul\u201D in Coyoac\u00E1n. Today it\u2019s one of Mexico\u2019s most visited museums, drawing over 800,000 visitors a year.',
+        gr: 'Η Frida Kahlo γεννήθηκε, έζησε και πέθανε στο κοβαλτιό-μπλε \u00ABCasa Azul\u00BB στο Coyoac\u00E1n. Σήμερα είναι από τα πιο δημοφιλή μουσεία του Μεξικού, με πάνω από 800.000 επισκέπτες ετησίως.'
+      }
+    },
+    {
+      icon: '\u{1F6F8}', accent: '#546e7a',
+      title: { en: 'Metro Treasures', gr: 'Θησαυροί του Μετρό' },
+      text: {
+        en: 'Mexico City\u2019s metro carries 4.6\u00A0million passengers daily. During construction, workers unearthed an Aztec pyramid at the P\u00EDno Su\u00E1rez station \u2014 it\u2019s now on display inside.',
+        gr: 'Το μετρό της Πόλης του Μεξικού μεταφέρει 4,6\u00A0εκατομμύρια επιβάτες ημερησίως. Κατά την κατασκευή, βρέθηκε αζτεκική πυραμίδα στον σταθμό P\u00EDno Su\u00E1rez \u2014 εκτίθεται εκεί.'
+      }
+    },
+    {
+      icon: '\u{1F30E}', accent: '#2e7d32',
+      title: { en: 'Mega-City', gr: 'Μεγαλούπολη' },
+      text: {
+        en: 'Greater Mexico City is home to over 21\u00A0million people, making it the largest Spanish-speaking city on the planet and the most populous metropolitan area in the Western Hemisphere.',
+        gr: 'Η ευρύτερη Πόλη του Μεξικού έχει πάνω από 21\u00A0εκατομμύρια κατοίκους \u2014 η μεγαλύτερη ισπανόφωνη πόλη στον πλανήτη και η πολυπληθέστερη μητροπολιτική περιοχή του Δυτικού Ημισφαιρίου.'
+      }
+    },
+    {
+      icon: '\u{1F337}', accent: '#e65100',
+      title: { en: 'Cempas\u00FAchil', gr: 'Cempas\u00FAchil' },
+      text: {
+        en: 'The Mexican marigold (cempas\u00FAchil) is believed to guide the dead home with its vivid colour and scent. During D\u00EDa de los Muertos, petals are scattered in paths from graves to altars.',
+        gr: 'Η μεξικανική κατιφές (cempas\u00FAchil) πιστεύεται ότι οδηγεί τους νεκρούς σπίτι με το έντονο χρώμα και άρωμά της. Στην Ημέρα των Νεκρών, πέταλα σκορπίζονται σε μονοπάτια από τάφους σε βωμούς.'
+      }
     }
   ];
 
