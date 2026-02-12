@@ -577,7 +577,7 @@ a:hover {
 /* Original Flight Cards (kept for backward compat) */
 .flight-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: var(--space-md);
 }
 
@@ -1066,14 +1066,14 @@ a:hover {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(244, 232, 216, 0.8);
+  color: rgba(244, 232, 216, 1);
   margin-bottom: 0.6rem;
 }
 
 .sunset-fact {
   font-size: 0.85rem;
-  color: rgba(244, 232, 216, 0.85);
-  background: rgba(14, 59, 67, 0.35);
+  color: rgba(244, 232, 216, 1);
+  background: rgba(14, 59, 67, 0.55);
   border: 1px solid rgba(244, 232, 216, 0.12);
   padding: 0.6rem 1rem;
   border-radius: 12px;
@@ -1455,7 +1455,7 @@ a:hover {
 
 .restaurant-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: var(--space-md);
 }
 
@@ -1770,7 +1770,7 @@ a:hover {
 
 .map-categories {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: var(--space-md);
 }
 
@@ -2440,6 +2440,10 @@ a.hotel-amenity:hover .hotel-amenity-icon {
     grid-template-columns: 1fr;
   }
 
+  .map-categories {
+    grid-template-columns: 1fr;
+  }
+
   .map-placeholder,
   .map-placeholder iframe {
     min-height: 300px;
@@ -2448,6 +2452,10 @@ a.hotel-amenity:hover .hotel-amenity-icon {
 
   .hero-content {
     padding: var(--space-md);
+  }
+
+  .hotel-card {
+    padding: var(--space-lg) var(--space-md);
   }
 
   .countdown-timer {
@@ -2602,6 +2610,10 @@ a.hotel-amenity:hover .hotel-amenity-icon {
 
   .cabin-amenities {
     grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 0 var(--space-sm);
   }
 
   .hotel-amenities-grid {
