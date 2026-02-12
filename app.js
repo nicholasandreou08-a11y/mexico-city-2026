@@ -129,7 +129,7 @@
   };
 
   // ─── STATE ───────────────────────────
-  let currentLang = 'en';
+  let currentLang = 'gr';
   let isLiveMode = false;
   let completedDays = JSON.parse(localStorage.getItem('mx2026_completed') || '[]');
   let weatherPayload = null;
@@ -191,6 +191,9 @@
       setTimeout(() => {
         document.body.classList.remove('lang-switching');
       }, 50);
+
+      // Update trivia fact for new language
+      renderSunsetFact();
 
       if (weatherPayload) {
         renderWeather(weatherPayload);
@@ -874,7 +877,7 @@
       gr: 'Το Zocalo είναι μία από τις μεγαλύτερες πλατείες πόλης στον κόσμο.'
     },
     {
-      en: 'Teotihuacan means “place where the gods were created.”',
+      en: 'Teotihuacan means "place where the gods were created."',
       gr: 'Teotihuacan σημαίνει «ο τόπος όπου δημιουργήθηκαν οι θεοί».'
     },
     {
@@ -882,32 +885,56 @@
       gr: 'Το Πάρκο Chapultepec είναι από τα μεγαλύτερα αστικά πάρκα στο Δυτικό Ημισφαίριο.'
     },
     {
-      en: 'The Angel of Independence is a symbol of Mexico’s modern era.',
+      en: 'The Angel of Independence is a symbol of Mexico\u2019s modern era.',
       gr: 'Ο Άγγελος της Ανεξαρτησίας είναι σύμβολο της σύγχρονης εποχής του Μεξικού.'
     }
   ];
 
   let sunsetFactIndex = 0;
+  let factRotationTimer = null;
+  let factAnimating = false;
 
   function renderSunsetFact() {
     if (!sunsetFact) return;
     const fact = SUNSET_FACTS[sunsetFactIndex % SUNSET_FACTS.length];
-    sunsetFact.textContent = currentLang === 'en' ? fact.en : fact.gr;
+    const text = currentLang === 'en' ? fact.en : fact.gr;
+    sunsetFact.textContent = text;
+    sunsetFact.setAttribute('data-en', fact.en);
+    sunsetFact.setAttribute('data-gr', fact.gr);
   }
 
   function rotateSunsetFact() {
-    sunsetFact.style.opacity = '0';
-    setTimeout(() => {
+    if (!sunsetFact || factAnimating) return;
+    factAnimating = true;
+
+    // Fade out
+    sunsetFact.classList.add('fact-fade-out');
+
+    // Wait for CSS transition to finish, then swap text and fade in
+    function onFadeOut() {
+      sunsetFact.removeEventListener('transitionend', onFadeOut);
       sunsetFactIndex = (sunsetFactIndex + 1) % SUNSET_FACTS.length;
       renderSunsetFact();
-      sunsetFact.style.opacity = '1';
-    }, 400);
+      // Force reflow before removing class so the browser sees the change
+      void sunsetFact.offsetWidth;
+      sunsetFact.classList.remove('fact-fade-out');
+      factAnimating = false;
+    }
+
+    sunsetFact.addEventListener('transitionend', onFadeOut, { once: true });
+
+    // Safety fallback in case transitionend doesn't fire
+    setTimeout(() => {
+      if (factAnimating) {
+        sunsetFact.removeEventListener('transitionend', onFadeOut);
+        onFadeOut();
+      }
+    }, 700);
   }
 
   if (sunsetFact) {
-    sunsetFact.style.transition = 'opacity 0.4s ease';
     renderSunsetFact();
-    setInterval(rotateSunsetFact, 6000);
+    factRotationTimer = setInterval(rotateSunsetFact, 6000);
   }
 
   // Section title animation
@@ -1224,6 +1251,6 @@
   // ═══════════════════════════════════════
 
   // Set initial language
-  setLanguage('en');
+  setLanguage('gr');
 
 })();

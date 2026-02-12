@@ -1081,6 +1081,12 @@ a:hover {
   max-width: 540px;
   line-height: 1.6;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.sunset-fact.fact-fade-out {
+  opacity: 0;
 }
 
 @keyframes sunsetShift {
