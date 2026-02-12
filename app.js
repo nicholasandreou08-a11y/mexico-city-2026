@@ -834,34 +834,6 @@
     updateSunsetParallax();
   }
 
-  // Itinerary overlay driven by scroll (closes over trivia)
-  let overlapTicking = false;
-
-  function updateItineraryOverlap() {
-    if (!sunsetSection || !itinerarySection) return;
-    const viewport = window.innerHeight || document.documentElement.clientHeight;
-    const rect = itinerarySection.getBoundingClientRect();
-    const maxOverlap = Math.min(220, Math.max(120, sunsetSection.offsetHeight * 0.45));
-    const progress = Math.min(Math.max((viewport - rect.top) / viewport, 0), 1);
-    const overlap = Math.round(progress * maxOverlap);
-    const overlapValue = `-${overlap}px`;
-    document.documentElement.style.setProperty('--itinerary-overlap', overlapValue);
-    itinerarySection.style.setProperty('--itinerary-overlap', overlapValue);
-    overlapTicking = false;
-  }
-
-  function onOverlapScroll() {
-    if (!overlapTicking) {
-      window.requestAnimationFrame(updateItineraryOverlap);
-      overlapTicking = true;
-    }
-  }
-
-  if (sunsetSection && itinerarySection) {
-    window.addEventListener('scroll', onOverlapScroll, { passive: true });
-    window.addEventListener('resize', onOverlapScroll, { passive: true });
-    updateItineraryOverlap();
-  }
 
   // ═══════════════════════════════════════
   // SUNSET FACT ROTATOR
