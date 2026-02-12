@@ -1047,46 +1047,21 @@
   </section>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- CITYZEN SUNSET VIGNETTE / TRIVIA -->
+  <!-- TRIVIA — LOTERÍA DEL CONOCIMIENTO -->
   <!-- ═══════════════════════════════════════ -->
-  <section id="cityzen-sunset" class="section cityzen-sunset">
-    <div class="sunset-sky"></div>
-    <div class="sunset-haze"></div>
-    <div class="sunset-glow"></div>
-    <div class="sunset-aura"></div>
-    <div class="sunset-orbs" aria-hidden="true"></div>
-    <div class="sunset-glyphs" aria-hidden="true">
-      <svg class="glyph glyph-sun" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="40" cy="40" r="15" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-        <circle cx="40" cy="40" r="25" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-        <line x1="40" y1="5" x2="40" y2="15" stroke="currentColor" stroke-width="1" opacity="0.15"/>
-        <line x1="40" y1="65" x2="40" y2="75" stroke="currentColor" stroke-width="1" opacity="0.15"/>
-        <line x1="5" y1="40" x2="15" y2="40" stroke="currentColor" stroke-width="1" opacity="0.15"/>
-        <line x1="65" y1="40" x2="75" y2="40" stroke="currentColor" stroke-width="1" opacity="0.15"/>
-        <line x1="15.15" y1="15.15" x2="22.22" y2="22.22" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-        <line x1="57.78" y1="57.78" x2="64.85" y2="64.85" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-        <line x1="64.85" y1="15.15" x2="57.78" y2="22.22" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-        <line x1="22.22" y1="57.78" x2="15.15" y2="64.85" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      </svg>
-      <svg class="glyph glyph-pyramid" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M30 8 L55 52 L5 52 Z" stroke="currentColor" stroke-width="1.5" opacity="0.14"/>
-        <line x1="15" y1="36" x2="45" y2="36" stroke="currentColor" stroke-width="1" opacity="0.1"/>
-        <line x1="20" y1="44" x2="40" y2="44" stroke="currentColor" stroke-width="1" opacity="0.1"/>
-      </svg>
-      <svg class="glyph glyph-eagle" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M35 15 C25 25, 10 30, 5 45 C15 40, 25 38, 35 50 C45 38, 55 40, 65 45 C60 30, 45 25, 35 15Z" stroke="currentColor" stroke-width="1.5" opacity="0.14"/>
-      </svg>
-      <svg class="glyph glyph-marigold" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="25" cy="25" r="6" fill="currentColor" opacity="0.12"/>
-        <ellipse cx="25" cy="12" rx="5" ry="8" fill="currentColor" opacity="0.1"/>
-        <ellipse cx="25" cy="38" rx="5" ry="8" fill="currentColor" opacity="0.1"/>
-        <ellipse cx="12" cy="25" rx="8" ry="5" fill="currentColor" opacity="0.1"/>
-        <ellipse cx="38" cy="25" rx="8" ry="5" fill="currentColor" opacity="0.1"/>
-      </svg>
-    </div>
-    <div class="sunset-fact-wrap">
-      <h3 class="sunset-fact-title" data-en="Trivia" data-gr="TRIVIA">Trivia</h3>
-      <div class="sunset-fact" id="sunsetFact" data-en="Mexico City was built on the lakes of the Valley of Mexico." data-gr="Η Πόλη του Μεξικού χτίστηκε πάνω στις λίμνες της Κοιλάδας του Μεξικού.">Mexico City was built on the lakes of the Valley of Mexico.</div>
+  <section id="trivia-loteria" class="section trivia-loteria">
+    <div class="loteria-inner">
+      <h2 class="section-title" data-en="¿Sabías que...?" data-gr="Το ήξερες;">¿Sabías que...?</h2>
+      <p class="loteria-subtitle" data-en="Swipe through fun facts about Mexico City" data-gr="Σύρε για ενδιαφέρουσες πληροφορίες για την Πόλη του Μεξικού">Σύρε για ενδιαφέρουσες πληροφορίες για την Πόλη του Μεξικού</p>
+      <div class="loteria-carousel">
+        <button class="loteria-arrow loteria-prev" aria-label="Previous fact">&#8249;</button>
+        <div class="loteria-stage" id="loteriaStage"></div>
+        <button class="loteria-arrow loteria-next" aria-label="Next fact">&#8250;</button>
+      </div>
+      <div class="loteria-nav">
+        <div class="loteria-dots" id="loteriaDots"></div>
+        <div class="loteria-progress"><div class="loteria-progress-bar" id="loteriaProgress"></div></div>
+      </div>
     </div>
   </section>
 

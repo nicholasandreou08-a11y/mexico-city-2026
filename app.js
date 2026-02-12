@@ -156,12 +156,9 @@
   const weatherDays = document.getElementById('weatherDays');
   const weatherTip = document.getElementById('weatherTip');
   const weatherStatus = document.getElementById('weatherStatus');
-  const sunsetSection = document.getElementById('cityzen-sunset');
-  const sunsetSky = document.querySelector('.sunset-sky');
-  const sunsetHaze = document.querySelector('.sunset-haze');
-  const sunsetAura = document.querySelector('.sunset-aura');
-  const sunsetOrbs = document.querySelector('.sunset-orbs');
-  const sunsetFact = document.getElementById('sunsetFact');
+  const loteriaStage = document.getElementById('loteriaStage');
+  const loteriaDots = document.getElementById('loteriaDots');
+  const loteriaProgress = document.getElementById('loteriaProgress');
   const itinerarySection = document.getElementById('itinerary');
 
   // ═══════════════════════════════════════
@@ -191,9 +188,6 @@
       setTimeout(() => {
         document.body.classList.remove('lang-switching');
       }, 50);
-
-      // Update trivia fact for new language
-      renderSunsetFact();
 
       if (weatherPayload) {
         renderWeather(weatherPayload);
@@ -802,111 +796,234 @@
   });
 
   // ═══════════════════════════════════════
-  // CITYZEN SUNSET PARALLAX
+  // TRIVIA — LOTERÍA CAROUSEL
   // ═══════════════════════════════════════
 
-  let sunsetTicking = false;
-
-  function updateSunsetParallax() {
-    if (!sunsetSection) return;
-    const rect = sunsetSection.getBoundingClientRect();
-    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-    const progress = Math.min(Math.max((viewportHeight - rect.top) / (viewportHeight + rect.height), 0), 1);
-    const offset = (progress - 0.5) * 40;
-
-    if (sunsetSky) sunsetSky.style.transform = `translateY(${offset * 0.2}px)`;
-    if (sunsetHaze) sunsetHaze.style.transform = `translateY(${offset * 0.35}px)`;
-    if (sunsetAura) sunsetAura.style.transform = `translateY(${offset * 0.5}px)`;
-    if (sunsetOrbs) sunsetOrbs.style.transform = `translateY(${offset * 0.6}px)`;
-    sunsetTicking = false;
-  }
-
-  function onSunsetScroll() {
-    if (!sunsetTicking) {
-      window.requestAnimationFrame(updateSunsetParallax);
-      sunsetTicking = true;
-    }
-  }
-
-  if (sunsetSection) {
-    window.addEventListener('scroll', onSunsetScroll, { passive: true });
-    window.addEventListener('resize', onSunsetScroll, { passive: true });
-    updateSunsetParallax();
-  }
-
-
-  // ═══════════════════════════════════════
-  // SUNSET FACT ROTATOR
-  // ═══════════════════════════════════════
-
-  const SUNSET_FACTS = [
+  const TRIVIA_CARDS = [
     {
-      en: 'Mexico City was built on the lakes of the Valley of Mexico.',
-      gr: 'Η Πόλη του Μεξικού χτίστηκε πάνω στις λίμνες της Κοιλάδας του Μεξικού.'
+      icon: '\u{1F3D7}\uFE0F', accent: '#8b6044',
+      title: { en: 'A City on Water', gr: 'Πόλη πάνω στο Νερό' },
+      text: {
+        en: 'Mexico City was built on the lake bed of the Valley of Mexico. It sinks around 10\u00A0cm each year \u2014 some areas have dropped over 9\u00A0metres since 1900.',
+        gr: 'Η Πόλη του Μεξικού χτίστηκε στον πυθμένα λίμνης της Κοιλάδας του Μεξικού. Βυθίζεται ~10\u00A0εκ. τον χρόνο \u2014 κάποιες περιοχές έχουν πέσει πάνω από 9\u00A0μέτρα από το 1900.'
+      }
     },
     {
-      en: 'The Zocalo is one of the largest city squares in the world.',
-      gr: 'Το Zocalo είναι μία από τις μεγαλύτερες πλατείες πόλης στον κόσμο.'
+      icon: '\u{1F985}', accent: '#2a7f62',
+      title: { en: 'Eagle & Serpent', gr: 'Αετός & Φίδι' },
+      text: {
+        en: 'The Aztecs founded Tenochtitlan where they saw an eagle devouring a serpent on a cactus \u2014 that vision is now Mexico\u2019s coat of arms on the flag.',
+        gr: 'Οι Αζτέκοι ίδρυσαν την Tenochtitlan εκεί που είδαν έναν αετό να τρώει φίδι πάνω σε κάκτο \u2014 αυτό το όραμα είναι πλέον το εθνόσημο του Μεξικού.'
+      }
     },
     {
-      en: 'Teotihuacan means "place where the gods were created."',
-      gr: 'Teotihuacan σημαίνει «ο τόπος όπου δημιουργήθηκαν οι θεοί».'
+      icon: '\u{1F3DB}\uFE0F', accent: '#8b6e3a',
+      title: { en: 'Heart of the Z\u00F3calo', gr: 'Η Καρδιά του Z\u00F3calo' },
+      text: {
+        en: 'The Z\u00F3calo is one of the largest city squares on Earth. Beneath it lie the ruins of the Aztec Templo Mayor, discovered by chance in 1978.',
+        gr: 'Το Z\u00F3calo είναι μία από τις μεγαλύτερες πλατείες στη Γη. Κάτω από αυτό κρύβονται τα ερείπια του Templo Mayor, που ανακαλύφθηκαν τυχαία το 1978.'
+      }
     },
     {
-      en: 'Chapultepec Park is one of the largest urban parks in the Western Hemisphere.',
-      gr: 'Το Πάρκο Chapultepec είναι από τα μεγαλύτερα αστικά πάρκα στο Δυτικό Ημισφαίριο.'
+      icon: '\u{1F3D4}\uFE0F', accent: '#5a3e8a',
+      title: { en: 'Where Gods Were Born', gr: 'Όπου Γεννήθηκαν οι Θεοί' },
+      text: {
+        en: 'Teotihuac\u00E1n means \u201Cthe place where the gods were created.\u201D At its peak around 450\u00A0AD it was the largest city in the pre-Columbian Americas \u2014 125,000 people.',
+        gr: 'Teotihuac\u00E1n σημαίνει \u00ABο τόπος όπου δημιουργήθηκαν οι θεοί\u00BB. Στο αποκορύφωμά του (~450\u00A0μ.Χ.) ήταν η μεγαλύτερη πόλη της προκολομβιανής Αμερικής \u2014 125.000 κάτοικοι.'
+      }
     },
     {
-      en: 'The Angel of Independence is a symbol of Mexico\u2019s modern era.',
-      gr: 'Ο Άγγελος της Ανεξαρτησίας είναι σύμβολο της σύγχρονης εποχής του Μεξικού.'
+      icon: '\u{1F333}', accent: '#2d6e4f',
+      title: { en: 'Chapultepec', gr: 'Chapultepec' },
+      text: {
+        en: 'Chapultepec Park is twice the size of Central Park. Its name means \u201CGrasshopper Hill\u201D in Nahuatl \u2014 it houses a castle, a zoo, and 700-year-old ahuejote trees.',
+        gr: 'Το Πάρκο Chapultepec είναι διπλάσιο του Central Park. Σημαίνει \u00ABΛόφος Ακρίδας\u00BB στα Ναουάτλ \u2014 φιλοξενεί κάστρο, ζωολογικό κήπο και δέντρα 700 ετών.'
+      }
+    },
+    {
+      icon: '\u{1F32E}', accent: '#d4834e',
+      title: { en: 'Street Food Capital', gr: 'Πρωτεύουσα Street Food' },
+      text: {
+        en: 'Mexico City has over 300,000 street food vendors \u2014 more than any other city on Earth. UNESCO recognised Mexican cuisine as Intangible Cultural Heritage in 2010.',
+        gr: 'Η Πόλη του Μεξικού έχει πάνω από 300.000 πωλητές street food \u2014 περισσότερους από κάθε άλλη πόλη. Η UNESCO αναγνώρισε τη μεξικανική κουζίνα ως Άυλη Πολιτιστική Κληρονομιά το 2010.'
+      }
+    },
+    {
+      icon: '\u{1F3A8}', accent: '#b84a6f',
+      title: { en: 'Muralism Movement', gr: 'Κίνημα Τοιχογραφίας' },
+      text: {
+        en: 'Mexico City birthed the muralism movement. Diego Rivera, Orozco, and Siqueiros painted massive public works that changed the course of art history.',
+        gr: 'Η Πόλη του Μεξικού γέννησε το κίνημα τοιχογραφίας. Ο Diego Rivera, ο Orozco και ο Siqueiros ζωγράφισαν τεράστια δημόσια έργα που άλλαξαν την ιστορία της τέχνης.'
+      }
+    },
+    {
+      icon: '\u2728', accent: '#c6993b',
+      title: { en: 'The Golden Angel', gr: 'Ο Χρυσός Άγγελος' },
+      text: {
+        en: 'The Angel of Independence stands 45\u00A0metres tall on Paseo de la Reforma. The golden winged victory weighs 7\u00A0tonnes \u2014 the city\u2019s most iconic landmark.',
+        gr: 'Ο Άγγελος της Ανεξαρτησίας υψώνεται 45\u00A0μέτρα στο Paseo de la Reforma. Η χρυσή φτερωτή νίκη ζυγίζει 7\u00A0τόνους \u2014 το πιο εμβληματικό σημείο της πόλης.'
+      }
     }
   ];
 
-  let sunsetFactIndex = 0;
-  let factRotationTimer = null;
-  let factAnimating = false;
+  let triviaIndex = 0;
+  let triviaTimer = null;
+  let triviaProgressTimer = null;
+  let triviaProgressValue = 0;
+  let triviaAnimating = false;
+  const TRIVIA_INTERVAL = 7000;
+  const TRIVIA_TICK = 50;
 
-  function renderSunsetFact() {
-    if (!sunsetFact) return;
-    const fact = SUNSET_FACTS[sunsetFactIndex % SUNSET_FACTS.length];
-    const text = currentLang === 'en' ? fact.en : fact.gr;
-    sunsetFact.textContent = text;
-    sunsetFact.setAttribute('data-en', fact.en);
-    sunsetFact.setAttribute('data-gr', fact.gr);
+  function buildTriviaCard(index, immediate) {
+    const card = TRIVIA_CARDS[index];
+    const lang = currentLang === 'en' ? 'en' : 'gr';
+    const el = document.createElement('div');
+    el.className = 'loteria-card' + (immediate ? ' active' : '');
+    el.style.setProperty('--card-accent', card.accent);
+
+    var icon = document.createElement('div');
+    icon.className = 'loteria-card-icon';
+    icon.textContent = card.icon;
+
+    var num = document.createElement('div');
+    num.className = 'loteria-card-number';
+    num.setAttribute('data-en', 'Fact ' + (index + 1) + ' of ' + TRIVIA_CARDS.length);
+    num.setAttribute('data-gr', '\u0393\u03B5\u03B3\u03BF\u03BD\u03CC\u03C2 ' + (index + 1) + ' \u03B1\u03C0\u03CC ' + TRIVIA_CARDS.length);
+    num.textContent = lang === 'en' ? num.getAttribute('data-en') : num.getAttribute('data-gr');
+
+    var title = document.createElement('div');
+    title.className = 'loteria-card-title';
+    title.setAttribute('data-en', card.title.en);
+    title.setAttribute('data-gr', card.title.gr);
+    title.textContent = card.title[lang];
+
+    var text = document.createElement('div');
+    text.className = 'loteria-card-text';
+    text.setAttribute('data-en', card.text.en);
+    text.setAttribute('data-gr', card.text.gr);
+    text.textContent = card.text[lang];
+
+    var divider = document.createElement('div');
+    divider.className = 'loteria-card-divider';
+
+    el.appendChild(icon);
+    el.appendChild(num);
+    el.appendChild(title);
+    el.appendChild(text);
+    el.appendChild(divider);
+    return el;
   }
 
-  function rotateSunsetFact() {
-    if (!sunsetFact || factAnimating) return;
-    factAnimating = true;
+  function goToTrivia(newIndex, direction) {
+    if (newIndex === triviaIndex || triviaAnimating || !loteriaStage) return;
+    triviaAnimating = true;
+    var dir = direction || (newIndex > triviaIndex ? 1 : -1);
+    var oldCard = loteriaStage.querySelector('.loteria-card.active');
 
-    // Fade out
-    sunsetFact.classList.add('fact-fade-out');
+    // Create new card off-screen
+    var newCard = buildTriviaCard(newIndex, false);
+    newCard.style.transform = dir > 0 ? 'translateX(110%)' : 'translateX(-110%)';
+    newCard.style.opacity = '0';
+    loteriaStage.appendChild(newCard);
 
-    // Wait for CSS transition to finish, then swap text and fade in
-    function onFadeOut() {
-      sunsetFact.removeEventListener('transitionend', onFadeOut);
-      sunsetFactIndex = (sunsetFactIndex + 1) % SUNSET_FACTS.length;
-      renderSunsetFact();
-      // Force reflow before removing class so the browser sees the change
-      void sunsetFact.offsetWidth;
-      sunsetFact.classList.remove('fact-fade-out');
-      factAnimating = false;
+    // Force reflow
+    void newCard.offsetWidth;
+
+    // Slide old card out
+    if (oldCard) {
+      oldCard.classList.remove('active');
+      oldCard.style.transform = dir > 0 ? 'translateX(-110%)' : 'translateX(110%)';
+      oldCard.style.opacity = '0';
+      setTimeout(function () { if (oldCard.parentNode) oldCard.remove(); }, 600);
     }
 
-    sunsetFact.addEventListener('transitionend', onFadeOut, { once: true });
+    // Slide new card in
+    newCard.classList.add('active');
+    newCard.style.transform = 'translateX(0)';
+    newCard.style.opacity = '1';
 
-    // Safety fallback in case transitionend doesn't fire
-    setTimeout(() => {
-      if (factAnimating) {
-        sunsetFact.removeEventListener('transitionend', onFadeOut);
-        onFadeOut();
-      }
-    }, 700);
+    triviaIndex = newIndex;
+
+    // Update dots
+    if (loteriaDots) {
+      loteriaDots.querySelectorAll('.loteria-dot').forEach(function (dot, i) {
+        dot.classList.toggle('active', i === newIndex);
+      });
+    }
+
+    // Unlock after transition
+    setTimeout(function () { triviaAnimating = false; }, 580);
+
+    // Reset auto-advance timer
+    resetTriviaTimer();
   }
 
-  if (sunsetFact) {
-    renderSunsetFact();
-    factRotationTimer = setInterval(rotateSunsetFact, 6000);
+  function advanceTrivia(dir) {
+    var len = TRIVIA_CARDS.length;
+    var next = (triviaIndex + dir + len) % len;
+    goToTrivia(next, dir);
+  }
+
+  function startTriviaTimer() {
+    triviaProgressValue = 0;
+    if (loteriaProgress) loteriaProgress.style.width = '0%';
+    triviaProgressTimer = setInterval(function () {
+      triviaProgressValue += TRIVIA_TICK;
+      var pct = Math.min((triviaProgressValue / TRIVIA_INTERVAL) * 100, 100);
+      if (loteriaProgress) loteriaProgress.style.width = pct + '%';
+    }, TRIVIA_TICK);
+    triviaTimer = setTimeout(function () {
+      advanceTrivia(1);
+    }, TRIVIA_INTERVAL);
+  }
+
+  function resetTriviaTimer() {
+    clearTimeout(triviaTimer);
+    clearInterval(triviaProgressTimer);
+    triviaProgressValue = 0;
+    if (loteriaProgress) loteriaProgress.style.width = '0%';
+    startTriviaTimer();
+  }
+
+  // Initialize Lotería carousel
+  if (loteriaStage) {
+    // Render first card
+    loteriaStage.appendChild(buildTriviaCard(0, true));
+
+    // Build dots
+    if (loteriaDots) {
+      TRIVIA_CARDS.forEach(function (_, i) {
+        var dot = document.createElement('button');
+        dot.className = 'loteria-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Fact ' + (i + 1));
+        dot.addEventListener('click', function () { goToTrivia(i); });
+        loteriaDots.appendChild(dot);
+      });
+    }
+
+    // Arrow listeners
+    var prevBtn = document.querySelector('.loteria-prev');
+    var nextBtn = document.querySelector('.loteria-next');
+    if (prevBtn) prevBtn.addEventListener('click', function () { advanceTrivia(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { advanceTrivia(1); });
+
+    // Touch / swipe support
+    var touchStartX = 0;
+    var touchStartY = 0;
+    loteriaStage.addEventListener('touchstart', function (e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    loteriaStage.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        advanceTrivia(dx < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+
+    // Start auto-advance
+    startTriviaTimer();
   }
 
   // Section title animation
