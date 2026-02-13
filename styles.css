@@ -3104,6 +3104,38 @@ a.hotel-amenity:hover .hotel-amenity-icon {
    ENHANCEMENT 4: PACKING CHECKLIST
    ═══════════════════════════════════════ */
 
+.packing-header {
+  cursor: pointer;
+  position: relative;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.packing-toggle-icon {
+  position: absolute;
+  top: 0.25rem;
+  right: 0;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: rgba(198, 93, 59, 0.6);
+  transition: transform 0.3s var(--ease-out);
+  line-height: 1;
+}
+
+.packing.expanded .packing-toggle-icon {
+  transform: rotate(45deg);
+}
+
+.packing-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease-out), padding 0.5s var(--ease-out);
+}
+
+.packing.expanded .packing-body {
+  max-height: 2000px;
+}
+
 .packing-progress-bar {
   position: relative;
   height: 8px;
