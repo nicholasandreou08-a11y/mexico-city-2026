@@ -84,12 +84,12 @@
     <button class="nav-dot" data-target="senses" title="Senses"><span></span></button>
     <button class="nav-dot" data-target="itinerary" title="Itinerary"><span></span></button>
     <button class="nav-dot" data-target="weather" title="Weather"><span></span></button>
+    <button class="nav-dot" data-target="packing" title="Packing"><span></span></button>
     <button class="nav-dot" data-target="dining" title="Dining"><span></span></button>
     <button class="nav-dot" data-target="phrasebook" title="Phrases"><span></span></button>
     <button class="nav-dot" data-target="trivia-loteria" title="Trivia"><span></span></button>
     <button class="nav-dot" data-target="history" title="History"><span></span></button>
     <button class="nav-dot" data-target="map" title="Map"><span></span></button>
-    <button class="nav-dot" data-target="packing" title="Packing"><span></span></button>
   </nav>
 
   <!-- Language Toggle -->
@@ -947,6 +947,82 @@
         <div class="currency-tip">
           <strong data-en="Tipping:" data-gr="Φιλοδώρημα:">Tipping:</strong>
           <span data-en="10–15% at restaurants (check if included). Porters $25–50 MXN. Round up taxi fares." data-gr="10–15% στα εστιατόρια (ελέγξτε αν περιλαμβάνεται). Αχθοφόροι $25–50 MXN. Στρογγυλοποιήστε τα κόμιστρα ταξί.">10–15% at restaurants (check if included). Porters $25–50 MXN. Round up taxi fares.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PACKING CHECKLIST -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="aztec-divider"></div>
+
+  <section id="packing" class="section packing">
+    <div class="container">
+      <span class="section-emoji">&#127890;</span>
+      <h2 class="section-title" data-en="Packing Checklist" data-gr="Λίστα Αποσκευών">Packing Checklist</h2>
+      <p class="section-intro" data-en="Tick items off as you pack — progress saves automatically." data-gr="Τσεκάρετε τα αντικείμενα καθώς πακετάρετε — η πρόοδος αποθηκεύεται αυτόματα.">Tick items off as you pack — progress saves automatically.</p>
+
+      <div class="packing-progress-bar">
+        <div class="packing-progress-fill" id="packingProgressFill"></div>
+        <span class="packing-progress-text" id="packingProgressText">0 / 0</span>
+      </div>
+
+      <div class="packing-categories" id="packingCategories">
+        <div class="packing-category" data-category="documents">
+          <h3 class="packing-category-title" data-en="Documents" data-gr="Έγγραφα">Documents</h3>
+          <div class="packing-items">
+            <label class="packing-item"><input type="checkbox" data-item="passports"><span data-en="Passports" data-gr="Διαβατήρια">Passports</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="boarding-passes"><span data-en="Boarding passes" data-gr="Κάρτες επιβίβασης">Boarding passes</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="hotel-confirmation"><span data-en="Hotel confirmation" data-gr="Επιβεβαίωση ξενοδοχείου">Hotel confirmation</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="travel-insurance"><span data-en="Travel insurance docs" data-gr="Έγγραφα ασφάλισης">Travel insurance docs</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="tour-bookings"><span data-en="Tour booking printouts" data-gr="Εκτυπώσεις κρατήσεων ξεναγήσεων">Tour booking printouts</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="credit-cards"><span data-en="Credit/debit cards" data-gr="Πιστωτικές/χρεωστικές κάρτες">Credit/debit cards</span></label>
+          </div>
+        </div>
+        <div class="packing-category" data-category="clothing">
+          <h3 class="packing-category-title" data-en="Clothing" data-gr="Ρούχα">Clothing</h3>
+          <div class="packing-items">
+            <label class="packing-item"><input type="checkbox" data-item="walking-shoes"><span data-en="Comfortable walking shoes" data-gr="Άνετα παπούτσια βαδίσματος">Comfortable walking shoes</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="light-jacket"><span data-en="Light jacket (evenings)" data-gr="Ελαφρύ μπουφάν (βράδια)">Light jacket (evenings)</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="t-shirts"><span data-en="T-shirts / light tops" data-gr="T-shirts / ελαφριά μπλουζάκια">T-shirts / light tops</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="trousers"><span data-en="Trousers / shorts" data-gr="Παντελόνια / σορτς">Trousers / shorts</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="dinner-outfit"><span data-en="Smart dinner outfit" data-gr="Κομψό ντύσιμο για δείπνο">Smart dinner outfit</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="sun-hat"><span data-en="Sun hat" data-gr="Καπέλο ηλίου">Sun hat</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="swimwear"><span data-en="Swimwear (rooftop pool)" data-gr="Μαγιό (πισίνα ταράτσας)">Swimwear (rooftop pool)</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="underwear"><span data-en="Underwear & socks" data-gr="Εσώρουχα & κάλτσες">Underwear & socks</span></label>
+          </div>
+        </div>
+        <div class="packing-category" data-category="tech">
+          <h3 class="packing-category-title" data-en="Tech" data-gr="Τεχνολογία">Tech</h3>
+          <div class="packing-items">
+            <label class="packing-item"><input type="checkbox" data-item="phone-charger"><span data-en="Phone + charger" data-gr="Κινητό + φορτιστής">Phone + charger</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="power-bank"><span data-en="Power bank" data-gr="Power bank">Power bank</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="camera"><span data-en="Camera" data-gr="Φωτογραφική μηχανή">Camera</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="headphones"><span data-en="Headphones" data-gr="Ακουστικά">Headphones</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="plug-adapter"><span data-en="US plug adapter" data-gr="Αντάπτορας πρίζας US">US plug adapter</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="kindle"><span data-en="Kindle / iPad" data-gr="Kindle / iPad">Kindle / iPad</span></label>
+          </div>
+        </div>
+        <div class="packing-category" data-category="toiletries">
+          <h3 class="packing-category-title" data-en="Toiletries" data-gr="Είδη Υγιεινής">Toiletries</h3>
+          <div class="packing-items">
+            <label class="packing-item"><input type="checkbox" data-item="sunscreen"><span data-en="Sunscreen (SPF 50)" data-gr="Αντηλιακό (SPF 50)">Sunscreen (SPF 50)</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="insect-repellent"><span data-en="Insect repellent" data-gr="Εντομοαπωθητικό">Insect repellent</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="medications"><span data-en="Medications" data-gr="Φάρμακα">Medications</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="toothbrush"><span data-en="Toothbrush & toothpaste" data-gr="Οδοντόβουρτσα & οδοντόκρεμα">Toothbrush & toothpaste</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="hand-sanitiser"><span data-en="Hand sanitiser" data-gr="Αντισηπτικό χεριών">Hand sanitiser</span></label>
+          </div>
+        </div>
+        <div class="packing-category" data-category="misc">
+          <h3 class="packing-category-title" data-en="Miscellaneous" data-gr="Διάφορα">Miscellaneous</h3>
+          <div class="packing-items">
+            <label class="packing-item"><input type="checkbox" data-item="reusable-bottle"><span data-en="Reusable water bottle" data-gr="Επαναχρησιμοποιήσιμο μπουκάλι νερού">Reusable water bottle</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="small-backpack"><span data-en="Small day backpack" data-gr="Μικρό σακίδιο ημέρας">Small day backpack</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="snacks-flight"><span data-en="Snacks for the flight" data-gr="Σνακ για την πτήση">Snacks for the flight</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="pesos-cash"><span data-en="Some pesos (cash)" data-gr="Λίγα πέσος (μετρητά)">Some pesos (cash)</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="rain-jacket"><span data-en="Compact rain jacket" data-gr="Συμπαγές αδιάβροχο">Compact rain jacket</span></label>
+          </div>
         </div>
       </div>
     </div>
@@ -2000,87 +2076,6 @@
           </ul>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════ -->
-  <!-- PACKING CHECKLIST -->
-  <!-- ═══════════════════════════════════════ -->
-  <div class="aztec-divider"></div>
-
-  <section id="packing" class="section packing">
-    <div class="container">
-      <div class="packing-header" role="button" tabindex="0">
-        <span class="section-emoji">&#127890;</span>
-        <h2 class="section-title" data-en="Packing Checklist" data-gr="Λίστα Αποσκευών">Packing Checklist</h2>
-        <p class="section-intro" data-en="Tick items off as you pack — progress saves automatically." data-gr="Τσεκάρετε τα αντικείμενα καθώς πακετάρετε — η πρόοδος αποθηκεύεται αυτόματα.">Tick items off as you pack — progress saves automatically.</p>
-        <span class="packing-toggle-icon">+</span>
-      </div>
-
-      <div class="packing-body">
-        <div class="packing-progress-bar">
-          <div class="packing-progress-fill" id="packingProgressFill"></div>
-          <span class="packing-progress-text" id="packingProgressText">0 / 0</span>
-        </div>
-
-        <div class="packing-categories" id="packingCategories">
-          <div class="packing-category" data-category="documents">
-            <h3 class="packing-category-title" data-en="Documents" data-gr="Έγγραφα">Documents</h3>
-            <div class="packing-items">
-              <label class="packing-item"><input type="checkbox" data-item="passports"><span data-en="Passports" data-gr="Διαβατήρια">Passports</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="boarding-passes"><span data-en="Boarding passes" data-gr="Κάρτες επιβίβασης">Boarding passes</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="hotel-confirmation"><span data-en="Hotel confirmation" data-gr="Επιβεβαίωση ξενοδοχείου">Hotel confirmation</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="travel-insurance"><span data-en="Travel insurance docs" data-gr="Έγγραφα ασφάλισης">Travel insurance docs</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="tour-bookings"><span data-en="Tour booking printouts" data-gr="Εκτυπώσεις κρατήσεων ξεναγήσεων">Tour booking printouts</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="credit-cards"><span data-en="Credit/debit cards" data-gr="Πιστωτικές/χρεωστικές κάρτες">Credit/debit cards</span></label>
-            </div>
-          </div>
-          <div class="packing-category" data-category="clothing">
-            <h3 class="packing-category-title" data-en="Clothing" data-gr="Ρούχα">Clothing</h3>
-            <div class="packing-items">
-              <label class="packing-item"><input type="checkbox" data-item="walking-shoes"><span data-en="Comfortable walking shoes" data-gr="Άνετα παπούτσια βαδίσματος">Comfortable walking shoes</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="light-jacket"><span data-en="Light jacket (evenings)" data-gr="Ελαφρύ μπουφάν (βράδια)">Light jacket (evenings)</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="t-shirts"><span data-en="T-shirts / light tops" data-gr="T-shirts / ελαφριά μπλουζάκια">T-shirts / light tops</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="trousers"><span data-en="Trousers / shorts" data-gr="Παντελόνια / σορτς">Trousers / shorts</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="dinner-outfit"><span data-en="Smart dinner outfit" data-gr="Κομψό ντύσιμο για δείπνο">Smart dinner outfit</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="sun-hat"><span data-en="Sun hat" data-gr="Καπέλο ηλίου">Sun hat</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="swimwear"><span data-en="Swimwear (rooftop pool)" data-gr="Μαγιό (πισίνα ταράτσας)">Swimwear (rooftop pool)</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="underwear"><span data-en="Underwear & socks" data-gr="Εσώρουχα & κάλτσες">Underwear & socks</span></label>
-            </div>
-          </div>
-          <div class="packing-category" data-category="tech">
-            <h3 class="packing-category-title" data-en="Tech" data-gr="Τεχνολογία">Tech</h3>
-            <div class="packing-items">
-              <label class="packing-item"><input type="checkbox" data-item="phone-charger"><span data-en="Phone + charger" data-gr="Κινητό + φορτιστής">Phone + charger</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="power-bank"><span data-en="Power bank" data-gr="Power bank">Power bank</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="camera"><span data-en="Camera" data-gr="Φωτογραφική μηχανή">Camera</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="headphones"><span data-en="Headphones" data-gr="Ακουστικά">Headphones</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="plug-adapter"><span data-en="US plug adapter" data-gr="Αντάπτορας πρίζας US">US plug adapter</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="kindle"><span data-en="Kindle / iPad" data-gr="Kindle / iPad">Kindle / iPad</span></label>
-            </div>
-          </div>
-          <div class="packing-category" data-category="toiletries">
-            <h3 class="packing-category-title" data-en="Toiletries" data-gr="Είδη Υγιεινής">Toiletries</h3>
-            <div class="packing-items">
-              <label class="packing-item"><input type="checkbox" data-item="sunscreen"><span data-en="Sunscreen (SPF 50)" data-gr="Αντηλιακό (SPF 50)">Sunscreen (SPF 50)</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="insect-repellent"><span data-en="Insect repellent" data-gr="Εντομοαπωθητικό">Insect repellent</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="medications"><span data-en="Medications" data-gr="Φάρμακα">Medications</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="toothbrush"><span data-en="Toothbrush & toothpaste" data-gr="Οδοντόβουρτσα & οδοντόκρεμα">Toothbrush & toothpaste</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="hand-sanitiser"><span data-en="Hand sanitiser" data-gr="Αντισηπτικό χεριών">Hand sanitiser</span></label>
-            </div>
-          </div>
-          <div class="packing-category" data-category="misc">
-            <h3 class="packing-category-title" data-en="Miscellaneous" data-gr="Διάφορα">Miscellaneous</h3>
-            <div class="packing-items">
-              <label class="packing-item"><input type="checkbox" data-item="reusable-bottle"><span data-en="Reusable water bottle" data-gr="Επαναχρησιμοποιήσιμο μπουκάλι νερού">Reusable water bottle</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="small-backpack"><span data-en="Small day backpack" data-gr="Μικρό σακίδιο ημέρας">Small day backpack</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="snacks-flight"><span data-en="Snacks for the flight" data-gr="Σνακ για την πτήση">Snacks for the flight</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="pesos-cash"><span data-en="Some pesos (cash)" data-gr="Λίγα πέσος (μετρητά)">Some pesos (cash)</span></label>
-              <label class="packing-item"><input type="checkbox" data-item="rain-jacket"><span data-en="Compact rain jacket" data-gr="Συμπαγές αδιάβροχο">Compact rain jacket</span></label>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>

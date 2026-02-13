@@ -1558,29 +1558,6 @@
   const packingProgressText = document.getElementById('packingProgressText');
 
   if (packingCategories) {
-    const packingSection = document.getElementById('packing');
-    const packingHeader = packingSection ? packingSection.querySelector('.packing-header') : null;
-
-    // Auto-expand before arrival, collapsed from arrival onwards
-    if (packingSection) {
-      if (now < TRIP_START) {
-        packingSection.classList.add('expanded');
-      }
-    }
-
-    // Toggle expand/collapse on header click
-    if (packingHeader) {
-      packingHeader.addEventListener('click', () => {
-        packingSection.classList.toggle('expanded');
-      });
-      packingHeader.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          packingSection.classList.toggle('expanded');
-        }
-      });
-    }
-
     const packingState = JSON.parse(localStorage.getItem('mx2026_packing') || '{}');
     const allCheckboxes = packingCategories.querySelectorAll('input[type="checkbox"]');
 
