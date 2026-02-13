@@ -2009,6 +2009,7 @@ a:hover {
 /* ─── Hotel Links Row ─── */
 .hotel-links {
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
   margin-top: 0.5rem;
