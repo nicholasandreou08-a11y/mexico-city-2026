@@ -1258,7 +1258,13 @@
       ctx.globalAlpha = p.life;
       ctx.fillStyle = p.color;
 
-      if (p.isFlower) {
+      if (p.isEmoji) {
+        // Draw emoji character on canvas
+        ctx.font = p.size + 'px serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(p.emoji, 0, 0);
+      } else if (p.isFlower) {
         drawFlower(p);
       } else {
         // Draw diamond/confetti shape
@@ -1285,6 +1291,8 @@
 
   footerSignature.addEventListener('click', (e) => {
     createConfetti(e.clientX, e.clientY);
+    // Third easter egg — discover by clicking the footer signature
+    if (typeof discoverEgg === 'function') discoverEgg('footer');
   });
 
   // ═══════════════════════════════════════
@@ -1438,6 +1446,356 @@
 
   // Update activity bar every 60 seconds alongside banner
   setInterval(updateActivityBar, 60000);
+
+  // ═══════════════════════════════════════
+  // ENHANCEMENT 1: SCROLL PROGRESS BAR + NAV DOTS
+  // ═══════════════════════════════════════
+
+  const scrollProgressBar = document.getElementById('scrollProgressBar');
+  const sectionNavDots = document.getElementById('sectionNavDots');
+
+  function updateScrollProgress() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (scrollProgressBar) scrollProgressBar.style.width = pct + '%';
+  }
+
+  // Nav dots — track which section is active
+  const navDotSections = [];
+  if (sectionNavDots) {
+    sectionNavDots.querySelectorAll('.nav-dot').forEach(dot => {
+      const targetId = dot.dataset.target;
+      const section = document.getElementById(targetId);
+      if (section) navDotSections.push({ dot, section });
+
+      dot.addEventListener('click', () => {
+        const target = document.getElementById(targetId);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
+  function updateNavDots() {
+    const scrollTop = window.pageYOffset + window.innerHeight * 0.35;
+    let activeIdx = 0;
+    navDotSections.forEach((entry, i) => {
+      if (entry.section.offsetTop <= scrollTop) activeIdx = i;
+    });
+    navDotSections.forEach((entry, i) => {
+      entry.dot.classList.toggle('active', i === activeIdx);
+    });
+  }
+
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        updateScrollProgress();
+        updateNavDots();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  // ═══════════════════════════════════════
+  // ENHANCEMENT 2: COUNTDOWN ZERO CELEBRATION
+  // ═══════════════════════════════════════
+
+  const celebrationOverlay = document.getElementById('celebrationOverlay');
+  const celebrationDismiss = document.getElementById('celebrationDismiss');
+
+  function triggerCelebration() {
+    if (localStorage.getItem('mx2026_celebrated')) return;
+    localStorage.setItem('mx2026_celebrated', '1');
+
+    // Multi-point confetti explosion
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    createConfetti(w * 0.2, h * 0.3);
+    createConfetti(w * 0.5, h * 0.2);
+    createConfetti(w * 0.8, h * 0.3);
+    setTimeout(() => {
+      createConfetti(w * 0.3, h * 0.5);
+      createConfetti(w * 0.7, h * 0.5);
+    }, 300);
+
+    if (celebrationOverlay) celebrationOverlay.classList.add('active');
+  }
+
+  if (celebrationDismiss) {
+    celebrationDismiss.addEventListener('click', () => {
+      celebrationOverlay.classList.remove('active');
+    });
+  }
+
+  // Patch updateCountdown to check for zero
+  const _origUpdateCountdown = updateCountdown;
+  // We override directly in the interval — intercept inside the existing updateCountdown
+  // Instead, we'll add a check in the setInterval cycle
+  let celebrationChecked = false;
+
+  function checkCelebration() {
+    if (celebrationChecked) return;
+    const now = getMexicoCityNow();
+    if (now >= TRIP_START && !localStorage.getItem('mx2026_celebrated')) {
+      celebrationChecked = true;
+      triggerCelebration();
+    }
+  }
+
+  // Check on load and every second
+  checkCelebration();
+  setInterval(checkCelebration, 1000);
+
+  // ═══════════════════════════════════════
+  // ENHANCEMENT 4: PACKING CHECKLIST
+  // ═══════════════════════════════════════
+
+  const packingCategories = document.getElementById('packingCategories');
+  const packingProgressFill = document.getElementById('packingProgressFill');
+  const packingProgressText = document.getElementById('packingProgressText');
+
+  if (packingCategories) {
+    const packingState = JSON.parse(localStorage.getItem('mx2026_packing') || '{}');
+    const allCheckboxes = packingCategories.querySelectorAll('input[type="checkbox"]');
+
+    // Restore state
+    allCheckboxes.forEach(cb => {
+      const item = cb.dataset.item;
+      if (packingState[item]) cb.checked = true;
+    });
+
+    function updatePackingProgress() {
+      const total = allCheckboxes.length;
+      let checked = 0;
+      allCheckboxes.forEach(cb => { if (cb.checked) checked++; });
+      const pct = total > 0 ? (checked / total) * 100 : 0;
+      if (packingProgressFill) packingProgressFill.style.width = pct + '%';
+      if (packingProgressText) {
+        const enText = checked + ' of ' + total + ' packed';
+        const grText = checked + ' από ' + total + ' πακεταρισμένα';
+        packingProgressText.textContent = currentLang === 'en' ? enText : grText;
+        packingProgressText.setAttribute('data-en', enText);
+        packingProgressText.setAttribute('data-gr', grText);
+      }
+
+      // All packed celebration
+      if (checked === total && total > 0) {
+        const cx = window.innerWidth / 2;
+        const cy = packingProgressFill.getBoundingClientRect().top;
+        createConfetti(cx, cy);
+      }
+    }
+
+    allCheckboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        const item = cb.dataset.item;
+        if (cb.checked) {
+          packingState[item] = true;
+        } else {
+          delete packingState[item];
+        }
+        localStorage.setItem('mx2026_packing', JSON.stringify(packingState));
+        updatePackingProgress();
+      });
+    });
+
+    updatePackingProgress();
+
+    // Register packing cards with sectionObserver
+    packingCategories.querySelectorAll('.packing-category').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+      sectionObserver.observe(el);
+    });
+  }
+
+  // ═══════════════════════════════════════
+  // ENHANCEMENT 5: PHRASE BOOK (flip cards)
+  // ═══════════════════════════════════════
+
+  document.querySelectorAll('.phrase-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
+  });
+
+  // Register phrase cards with sectionObserver
+  document.querySelectorAll('.phrase-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+    sectionObserver.observe(el);
+  });
+
+  // ═══════════════════════════════════════
+  // ENHANCEMENT 6: CINEMATIC SENSES STRIP
+  // ═══════════════════════════════════════
+
+  // Emoji particle burst system — extends existing canvas particle system
+  function createEmojiParticles(x, y, emojis, count) {
+    const emojiList = emojis.split(',').map(e => e.trim());
+    for (let i = 0; i < count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const velocity = 2 + Math.random() * 4;
+      const emoji = emojiList[Math.floor(Math.random() * emojiList.length)];
+      particles.push({
+        x,
+        y,
+        vx: Math.cos(angle) * velocity,
+        vy: Math.sin(angle) * velocity - 3,
+        life: 1,
+        decay: 0.012 + Math.random() * 0.012,
+        size: 14 + Math.random() * 10,
+        rotation: (Math.random() - 0.5) * 0.6,
+        rotationSpeed: (Math.random() - 0.5) * 0.15,
+        isEmoji: true,
+        emoji
+      });
+    }
+    if (particles.length > 0 && !animatingParticles) {
+      animatingParticles = true;
+      animateParticles();
+    }
+  }
+
+  // Senses cards — staggered scroll reveal + particle burst
+  const senseCards = document.querySelectorAll('.sense-card');
+  const sensesObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        const index = Array.from(senseCards).indexOf(card);
+        const delay = index * 100;
+
+        // Staggered fade-in
+        setTimeout(() => {
+          card.classList.add('visible');
+        }, delay);
+
+        // Particle burst after fade-in starts
+        setTimeout(() => {
+          const rect = card.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const emojis = card.getAttribute('data-particles') || '✨';
+          createEmojiParticles(cx, cy, emojis, 12);
+        }, delay + 300);
+
+        sensesObserver.unobserve(card);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  senseCards.forEach(card => {
+    sensesObserver.observe(card);
+  });
+
+  // Register currency card with sectionObserver
+  const currencyCard = document.querySelector('.currency-card');
+  if (currencyCard) {
+    currencyCard.style.opacity = '0';
+    currencyCard.style.transform = 'translateY(20px)';
+    currencyCard.style.transition = 'opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+    sectionObserver.observe(currencyCard);
+  }
+
+  // ═══════════════════════════════════════
+  // ENHANCEMENT 7: FAMILY EASTER EGGS
+  // ═══════════════════════════════════════
+
+  const eggState = JSON.parse(localStorage.getItem('mx2026_eggs') || '{"konami":false,"flag":false,"footer":false,"found":0}');
+  const eggCounter = document.getElementById('easterEggCounter');
+
+  function updateEggCounter() {
+    if (!eggCounter) return;
+    if (eggState.found === 0) {
+      eggCounter.textContent = '';
+      return;
+    }
+    eggCounter.classList.add('revealed');
+    const en = eggState.found + '/3 secrets found';
+    const gr = eggState.found + '/3 μυστικά βρέθηκαν';
+    eggCounter.textContent = currentLang === 'en' ? en : gr;
+    eggCounter.setAttribute('data-en', en);
+    eggCounter.setAttribute('data-gr', gr);
+  }
+
+  function discoverEgg(name) {
+    if (eggState[name]) return; // already found
+    eggState[name] = true;
+    eggState.found = (eggState.found || 0) + 1;
+    localStorage.setItem('mx2026_eggs', JSON.stringify(eggState));
+    updateEggCounter();
+  }
+
+  // --- Konami Code ---
+  const konamiSequence = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let konamiIndex = 0;
+
+  document.addEventListener('keydown', (e) => {
+    const expected = konamiSequence[konamiIndex];
+    if (e.key === expected || e.key.toLowerCase() === expected) {
+      konamiIndex++;
+      if (konamiIndex === konamiSequence.length) {
+        konamiIndex = 0;
+        discoverEgg('konami');
+        // Confetti
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        createConfetti(w * 0.3, h * 0.4);
+        createConfetti(w * 0.7, h * 0.4);
+        // Show secret message
+        const overlay = document.createElement('div');
+        overlay.className = 'secret-message-overlay';
+        overlay.innerHTML = '<div class="secret-message-content">' +
+          '<h2 data-en="You found a secret!" data-gr="Βρήκες ένα μυστικό!">' + (currentLang === 'en' ? 'You found a secret!' : 'Βρήκες ένα μυστικό!') + '</h2>' +
+          '<p data-en="The Andreou family goes harder than the Konami code. Mexico City doesn\'t know what\'s coming." data-gr="Η οικογένεια Ανδρέου τα δίνει όλα, πιο πολύ από τον κώδικα Konami. Η Πόλη του Μεξικού δεν ξέρει τι της έρχεται.">' +
+          (currentLang === 'en' ? "The Andreou family goes harder than the Konami code. Mexico City doesn't know what's coming." : 'Η οικογένεια Ανδρέου τα δίνει όλα, πιο πολύ από τον κώδικα Konami. Η Πόλη του Μεξικού δεν ξέρει τι της έρχεται.') + '</p></div>';
+        document.body.appendChild(overlay);
+        overlay.addEventListener('click', () => overlay.remove());
+        setTimeout(() => { if (overlay.parentNode) overlay.remove(); }, 6000);
+      }
+    } else {
+      konamiIndex = 0;
+      // Check if the pressed key is the start of the sequence
+      if (e.key === konamiSequence[0]) konamiIndex = 1;
+    }
+  });
+
+  // --- Flag Rapid-Click ---
+  const heroFlag = document.querySelector('.hero-flag');
+  let flagClicks = 0;
+  let flagTimer = null;
+
+  if (heroFlag) {
+    heroFlag.style.cursor = 'pointer';
+    heroFlag.addEventListener('click', (e) => {
+      flagClicks++;
+      clearTimeout(flagTimer);
+      if (flagClicks >= 5) {
+        flagClicks = 0;
+        discoverEgg('flag');
+        createParticles(e.clientX, e.clientY, '#E3A72F', 40);
+        createParticles(e.clientX, e.clientY, '#C65D3B', 30);
+        createParticles(e.clientX, e.clientY, '#0E3B43', 20);
+      } else {
+        flagTimer = setTimeout(() => { flagClicks = 0; }, 1500);
+      }
+    });
+  }
+
+  // Restore egg counter on load
+  updateEggCounter();
 
   // ═══════════════════════════════════════
   // INITIALIZE

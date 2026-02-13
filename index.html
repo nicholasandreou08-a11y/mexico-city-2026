@@ -73,6 +73,25 @@
   <div class="marigold-petal" style="--x: 35%; --delay: 12s; --duration: 21s;"></div>
   <div class="marigold-petal" style="--x: 55%; --delay: 14s; --duration: 15s;"></div>
 
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- Section Quick-Nav Dots (desktop only) -->
+  <nav class="section-nav-dots" id="sectionNavDots" aria-label="Section navigation">
+    <button class="nav-dot active" data-target="hero" title="Hero"><span></span></button>
+    <button class="nav-dot" data-target="journey" title="Journey"><span></span></button>
+    <button class="nav-dot" data-target="base" title="Base"><span></span></button>
+    <button class="nav-dot" data-target="senses" title="Senses"><span></span></button>
+    <button class="nav-dot" data-target="itinerary" title="Itinerary"><span></span></button>
+    <button class="nav-dot" data-target="weather" title="Weather"><span></span></button>
+    <button class="nav-dot" data-target="packing" title="Packing"><span></span></button>
+    <button class="nav-dot" data-target="dining" title="Dining"><span></span></button>
+    <button class="nav-dot" data-target="phrasebook" title="Phrases"><span></span></button>
+    <button class="nav-dot" data-target="trivia-loteria" title="Trivia"><span></span></button>
+    <button class="nav-dot" data-target="history" title="History"><span></span></button>
+    <button class="nav-dot" data-target="map" title="Map"><span></span></button>
+  </nav>
+
   <!-- Language Toggle -->
   <div class="lang-toggle" id="langToggle">
     <button class="lang-btn" data-lang="en">EN</button>
@@ -199,7 +218,6 @@
                 <span class="flight-date">21 Feb 2026</span>
                 <span class="flight-time" data-en="Depart 12:45 → Arrive 18:45" data-gr="Αναχώρηση 12:45 → Άφιξη 18:45">Depart 12:45 → Arrive 18:45</span>
               </div>
-              <span class="flight-cabin-badge" data-en="First" data-gr="ΠΡΩΤΗ ΘΕΣΗ">First</span>
             </div>
             <span class="flight-expand-icon">+</span>
           </div>
@@ -244,7 +262,6 @@
                 <span class="flight-date">28 Feb 2026</span>
                 <span class="flight-time" data-en="Depart 21:00 → Arrive 1 Mar 13:10" data-gr="Αναχώρηση 21:00 → Άφιξη 1 Μαρ 13:10">Depart 21:00 → Arrive 1 Mar 13:10</span>
               </div>
-              <span class="flight-cabin-badge club-world">Club World</span>
             </div>
             <span class="flight-expand-icon">+</span>
           </div>
@@ -287,37 +304,12 @@
       <div class="hotel-card">
         <div class="hotel-info">
           <h3 class="hotel-name">Sofitel Mexico City Reforma</h3>
+          <div class="hotel-stars">★★★★★</div>
+          <p class="hotel-tagline" data-en="Our home for eight nights in the heart of the city." data-gr="Το σπίτι μας για οκτώ νύχτες στην καρδιά της πόλης.">Our home for eight nights in the heart of the city.</p>
+          <p class="hotel-description" data-en="A blend of French elegance and Mexican warmth on the iconic Paseo de la Reforma. Panoramic city views, a rooftop pool overlooking the Angel of Independence, and world-class dining steps from Chapultepec Park." data-gr="Ένα μείγμα γαλλικής κομψότητας και μεξικάνικης ζεστασιάς στο εμβληματικό Paseo de la Reforma. Πανοραμική θέα στην πόλη, πισίνα στην ταράτσα με θέα τον Άγγελο της Ανεξαρτησίας και εστιατόρια παγκόσμιας κλάσης δίπλα στο Πάρκο Chapultepec.">A blend of French elegance and Mexican warmth on the iconic Paseo de la Reforma. Panoramic city views, a rooftop pool overlooking the Angel of Independence, and world-class dining steps from Chapultepec Park.</p>
           <div class="hotel-links">
             <a href="https://sofitel.accor.com/en/hotels/9615.html?merchantid=ppc-sof-nom-goo-ww-en-sear-mob&sourceid=bp-cenbp-cen&utm_source=google&utm_medium=cpc&utm_campaign=ppc-sof-nom-goo-ww-en-ww-mix-sear-bp&utm_term=nom&utm_content=ww-en-MX-V6582&wiz_campaign=20862679919&gad_source=1&gad_campaignid=20862679919&gbraid=0AAAAADo0MF9UilFzVvYZYu8Oe2Gxpgxde&gclid=CjwKCAiAkbbMBhB2EiwANbxtbXLgQNTK7c1UA5WFP9NRKn-y1Bf67JVJtmcbGkesVUtPgw7AnkFWNhoCWK0QAvD_BwE" target="_blank" rel="noopener noreferrer" class="hotel-website-link">&#127760; <span data-en="Hotel Website" data-gr="Ιστοσελίδα Ξενοδοχείου">Hotel Website</span></a>
             <a href="https://www.google.com/maps/search/?api=1&query=Sofitel+Mexico+City+Reforma" target="_blank" rel="noopener noreferrer" class="hotel-website-link">&#128205; <span data-en="View on Google Maps" data-gr="Δες στο Google Maps">View on Google Maps</span></a>
-          </div>
-          <p class="hotel-tagline" data-en="Our home for eight nights in the heart of the city." data-gr="Το σπίτι μας για οκτώ νύχτες στην καρδιά της πόλης.">Our home for eight nights in the heart of the city.</p>
-          <p class="hotel-description" data-en="A blend of French elegance and Mexican warmth on the iconic Paseo de la Reforma. Panoramic city views, a rooftop pool overlooking the Angel of Independence, and world-class dining steps from Chapultepec Park." data-gr="Ένα μείγμα γαλλικής κομψότητας και μεξικάνικης ζεστασιάς στο εμβληματικό Paseo de la Reforma. Πανοραμική θέα στην πόλη, πισίνα στην ταράτσα με θέα τον Άγγελο της Ανεξαρτησίας και εστιατόρια παγκόσμιας κλάσης δίπλα στο Πάρκο Chapultepec.">A blend of French elegance and Mexican warmth on the iconic Paseo de la Reforma. Panoramic city views, a rooftop pool overlooking the Angel of Independence, and world-class dining steps from Chapultepec Park.</p>
-          <div class="hotel-amenities-grid hotel-amenities-tags">
-            <span class="hotel-amenity-tag">
-              <span class="hotel-amenity-icon">&#127946;</span>
-              <span data-en="Rooftop Pool" data-gr="Πισίνα Ταράτσας">Rooftop Pool</span>
-            </span>
-            <span class="hotel-amenity-tag">
-              <span class="hotel-amenity-icon">&#127860;</span>
-              <span data-en="French Restaurant" data-gr="Γαλλικό Εστιατόριο">French Restaurant</span>
-            </span>
-            <span class="hotel-amenity-tag">
-              <span class="hotel-amenity-icon">&#128134;</span>
-              <span data-en="Spa & Wellness" data-gr="Spa & Ευεξία">Spa & Wellness</span>
-            </span>
-            <span class="hotel-amenity-tag">
-              <span class="hotel-amenity-icon">&#127748;</span>
-              <span data-en="Panoramic Views" data-gr="Πανοραμική Θέα">Panoramic Views</span>
-            </span>
-            <span class="hotel-amenity-tag">
-              <span class="hotel-amenity-icon">&#127912;</span>
-              <span data-en="Art Collection" data-gr="Συλλογή Τέχνης">Art Collection</span>
-            </span>
-            <span class="hotel-amenity-tag">
-              <span class="hotel-amenity-icon">&#128205;</span>
-              <span data-en="Paseo de la Reforma" data-gr="Paseo de la Reforma">Paseo de la Reforma</span>
-            </span>
           </div>
           <h4 class="hotel-nearby-title" data-en="Nearby Highlights" data-gr="ΚΟΝΤΙΝΑ ΑΞΙΟΘΕΑΤΑ">Nearby Highlights</h4>
           <div class="hotel-amenities-grid hotel-nearby-grid">
@@ -370,6 +362,42 @@
           </div>
         </div>
         <div class="hotel-accent"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aztec Divider -->
+  <div class="aztec-divider"></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CINEMATIC SENSES -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="senses" class="section senses">
+    <div class="container">
+      <span class="section-emoji">&#127770;</span>
+      <h2 class="section-title" data-en="A Taste of Mexico City" data-gr="Μια Γεύση από την Πόλη του Μεξικού">A Taste of Mexico City</h2>
+      <p class="section-intro" data-en="What's waiting for us — colour, chaos, and magic." data-gr="Τι μας περιμένει — χρώμα, χάος και μαγεία.">What's waiting for us — colour, chaos, and magic.</p>
+      <div class="senses-grid">
+        <div class="sense-card sense-card--see" data-particles="🇲🇽,🏛️">
+          <span class="sense-emoji">🏛️</span>
+          <p class="sense-text" data-en="Ancient pyramids older than Rome" data-gr="Αρχαίες πυραμίδες παλαιότερες της Ρώμης">Ancient pyramids older than Rome</p>
+        </div>
+        <div class="sense-card sense-card--taste" data-particles="🌮,🌶️">
+          <span class="sense-emoji">🌮</span>
+          <p class="sense-text" data-en="Street tacos at midnight, mezcal at sunrise" data-gr="Street tacos τα μεσάνυχτα, mezcal στην ανατολή">Street tacos at midnight, mezcal at sunrise</p>
+        </div>
+        <div class="sense-card sense-card--hear" data-particles="🎵,🎶">
+          <span class="sense-emoji">🎺</span>
+          <p class="sense-text" data-en="Mariachi echoing through candlelit plazas" data-gr="Μαριάτσι αντηχεί σε πλατείες με κεριά">Mariachi echoing through candlelit plazas</p>
+        </div>
+        <div class="sense-card sense-card--smell" data-particles="🌺,🌼">
+          <span class="sense-emoji">🌺</span>
+          <p class="sense-text" data-en="Marigolds, copal smoke, corn on the griddle" data-gr="Κατιφέδες, κοπάλι, καλαμπόκι στη σχάρα">Marigolds, copal smoke, corn on the griddle</p>
+        </div>
+        <div class="sense-card sense-card--feel" data-particles="✨,☀️">
+          <span class="sense-emoji">☀️</span>
+          <p class="sense-text" data-en="24°C in February while London shivers" data-gr="24°C τον Φεβρουάριο ενώ το Λονδίνο τρέμει">24°C in February while London shivers</p>
+        </div>
       </div>
     </div>
   </section>
@@ -894,6 +922,109 @@
         <div class="weather-tip" id="weatherTip" data-en="Tip will appear when live data loads." data-gr="Η συμβουλή θα εμφανιστεί όταν φορτώσουν τα δεδομένα.">Tip will appear when live data loads.</div>
         <div class="weather-status" id="weatherStatus" data-en="Live data via OpenWeather." data-gr="Ζωντανά δεδομένα μέσω OpenWeather.">Live data via OpenWeather.</div>
       </div>
+
+      <!-- Currency Quick-Reference Card -->
+      <div class="currency-card">
+        <h3 class="currency-title" data-en="Currency Quick Reference" data-gr="Γρήγορη Αναφορά Νομίσματος">Currency Quick Reference</h3>
+        <p class="currency-subtitle" data-en="British Pound (GBP) to Mexican Peso (MXN) · Approximate rates" data-gr="Βρετανική Λίρα (GBP) σε Μεξικάνικο Πέσο (MXN) · Κατά προσέγγιση">British Pound (GBP) to Mexican Peso (MXN) · Approximate rates</p>
+        <div class="currency-conversions">
+          <div class="currency-row"><span class="currency-gbp">£1</span><span class="currency-arrow">→</span><span class="currency-mxn">~$25 MXN</span></div>
+          <div class="currency-row"><span class="currency-gbp">£5</span><span class="currency-arrow">→</span><span class="currency-mxn">~$125 MXN</span></div>
+          <div class="currency-row"><span class="currency-gbp">£10</span><span class="currency-arrow">→</span><span class="currency-mxn">~$250 MXN</span></div>
+          <div class="currency-row"><span class="currency-gbp">£20</span><span class="currency-arrow">→</span><span class="currency-mxn">~$500 MXN</span></div>
+          <div class="currency-row"><span class="currency-gbp">£50</span><span class="currency-arrow">→</span><span class="currency-mxn">~$1,250 MXN</span></div>
+          <div class="currency-row"><span class="currency-gbp">£100</span><span class="currency-arrow">→</span><span class="currency-mxn">~$2,500 MXN</span></div>
+        </div>
+        <h4 class="currency-costs-title" data-en="Typical Costs" data-gr="Τυπικά Κόστη">Typical Costs</h4>
+        <div class="currency-costs">
+          <div class="currency-cost-item"><span class="cost-emoji">&#127790;</span><span class="cost-label" data-en="Street taco" data-gr="Street taco">Street taco</span><span class="cost-price">$15–25 MXN <span class="cost-gbp">(~£0.70)</span></span></div>
+          <div class="currency-cost-item"><span class="cost-emoji">&#9749;</span><span class="cost-label" data-en="Coffee" data-gr="Καφές">Coffee</span><span class="cost-price">$50–80 MXN <span class="cost-gbp">(~£2.50)</span></span></div>
+          <div class="currency-cost-item"><span class="cost-emoji">&#128661;</span><span class="cost-label" data-en="Uber (15 min)" data-gr="Uber (15 λεπτά)">Uber (15 min)</span><span class="cost-price">$60–120 MXN <span class="cost-gbp">(~£3.50)</span></span></div>
+          <div class="currency-cost-item"><span class="cost-emoji">&#127963;&#65039;</span><span class="cost-label" data-en="Museum entry" data-gr="Είσοδος μουσείου">Museum entry</span><span class="cost-price">$85–95 MXN <span class="cost-gbp">(~£3.50)</span></span></div>
+          <div class="currency-cost-item"><span class="cost-emoji">&#127860;</span><span class="cost-label" data-en="Nice dinner (per person)" data-gr="Καλό δείπνο (ανά άτομο)">Nice dinner (per person)</span><span class="cost-price">$800–2,000 MXN <span class="cost-gbp">(£32–80)</span></span></div>
+          <div class="currency-cost-item"><span class="cost-emoji">&#127866;</span><span class="cost-label" data-en="Beer / Mezcal" data-gr="Μπύρα / Μεσκάλ">Beer / Mezcal</span><span class="cost-price">$60–150 MXN <span class="cost-gbp">(~£3.50)</span></span></div>
+        </div>
+        <div class="currency-tip">
+          <strong data-en="Tipping:" data-gr="Φιλοδώρημα:">Tipping:</strong>
+          <span data-en="10–15% at restaurants (check if included). Porters $25–50 MXN. Round up taxi fares." data-gr="10–15% στα εστιατόρια (ελέγξτε αν περιλαμβάνεται). Αχθοφόροι $25–50 MXN. Στρογγυλοποιήστε τα κόμιστρα ταξί.">10–15% at restaurants (check if included). Porters $25–50 MXN. Round up taxi fares.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PACKING CHECKLIST -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="aztec-divider"></div>
+
+  <section id="packing" class="section packing">
+    <div class="container">
+      <span class="section-emoji">&#127890;</span>
+      <h2 class="section-title" data-en="Packing Checklist" data-gr="Λίστα Αποσκευών">Packing Checklist</h2>
+      <p class="section-intro" data-en="Tick items off as you pack — progress saves automatically." data-gr="Τσεκάρετε τα αντικείμενα καθώς πακετάρετε — η πρόοδος αποθηκεύεται αυτόματα.">Tick items off as you pack — progress saves automatically.</p>
+
+      <div class="packing-progress-bar">
+        <div class="packing-progress-fill" id="packingProgressFill"></div>
+        <span class="packing-progress-text" id="packingProgressText">0 / 0</span>
+      </div>
+
+      <div class="packing-categories" id="packingCategories">
+        <div class="packing-category" data-category="documents">
+          <h3 class="packing-category-title" data-en="Documents" data-gr="Έγγραφα">Documents</h3>
+          <div class="packing-items">
+            <label class="packing-item"><input type="checkbox" data-item="passports"><span data-en="Passports" data-gr="Διαβατήρια">Passports</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="boarding-passes"><span data-en="Boarding passes" data-gr="Κάρτες επιβίβασης">Boarding passes</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="hotel-confirmation"><span data-en="Hotel confirmation" data-gr="Επιβεβαίωση ξενοδοχείου">Hotel confirmation</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="travel-insurance"><span data-en="Travel insurance docs" data-gr="Έγγραφα ασφάλισης">Travel insurance docs</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="tour-bookings"><span data-en="Tour booking printouts" data-gr="Εκτυπώσεις κρατήσεων ξεναγήσεων">Tour booking printouts</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="credit-cards"><span data-en="Credit/debit cards" data-gr="Πιστωτικές/χρεωστικές κάρτες">Credit/debit cards</span></label>
+          </div>
+        </div>
+        <div class="packing-category" data-category="clothing">
+          <h3 class="packing-category-title" data-en="Clothing" data-gr="Ρούχα">Clothing</h3>
+          <div class="packing-items">
+            <label class="packing-item"><input type="checkbox" data-item="walking-shoes"><span data-en="Comfortable walking shoes" data-gr="Άνετα παπούτσια βαδίσματος">Comfortable walking shoes</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="light-jacket"><span data-en="Light jacket (evenings)" data-gr="Ελαφρύ μπουφάν (βράδια)">Light jacket (evenings)</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="t-shirts"><span data-en="T-shirts / light tops" data-gr="T-shirts / ελαφριά μπλουζάκια">T-shirts / light tops</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="trousers"><span data-en="Trousers / shorts" data-gr="Παντελόνια / σορτς">Trousers / shorts</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="dinner-outfit"><span data-en="Smart dinner outfit" data-gr="Κομψό ντύσιμο για δείπνο">Smart dinner outfit</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="sun-hat"><span data-en="Sun hat" data-gr="Καπέλο ηλίου">Sun hat</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="swimwear"><span data-en="Swimwear (rooftop pool)" data-gr="Μαγιό (πισίνα ταράτσας)">Swimwear (rooftop pool)</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="underwear"><span data-en="Underwear & socks" data-gr="Εσώρουχα & κάλτσες">Underwear & socks</span></label>
+          </div>
+        </div>
+        <div class="packing-category" data-category="tech">
+          <h3 class="packing-category-title" data-en="Tech" data-gr="Τεχνολογία">Tech</h3>
+          <div class="packing-items">
+            <label class="packing-item"><input type="checkbox" data-item="phone-charger"><span data-en="Phone + charger" data-gr="Κινητό + φορτιστής">Phone + charger</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="power-bank"><span data-en="Power bank" data-gr="Power bank">Power bank</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="camera"><span data-en="Camera" data-gr="Φωτογραφική μηχανή">Camera</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="headphones"><span data-en="Headphones" data-gr="Ακουστικά">Headphones</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="plug-adapter"><span data-en="US plug adapter" data-gr="Αντάπτορας πρίζας US">US plug adapter</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="kindle"><span data-en="Kindle / iPad" data-gr="Kindle / iPad">Kindle / iPad</span></label>
+          </div>
+        </div>
+        <div class="packing-category" data-category="toiletries">
+          <h3 class="packing-category-title" data-en="Toiletries" data-gr="Είδη Υγιεινής">Toiletries</h3>
+          <div class="packing-items">
+            <label class="packing-item"><input type="checkbox" data-item="sunscreen"><span data-en="Sunscreen (SPF 50)" data-gr="Αντηλιακό (SPF 50)">Sunscreen (SPF 50)</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="insect-repellent"><span data-en="Insect repellent" data-gr="Εντομοαπωθητικό">Insect repellent</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="medications"><span data-en="Medications" data-gr="Φάρμακα">Medications</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="toothbrush"><span data-en="Toothbrush & toothpaste" data-gr="Οδοντόβουρτσα & οδοντόκρεμα">Toothbrush & toothpaste</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="hand-sanitiser"><span data-en="Hand sanitiser" data-gr="Αντισηπτικό χεριών">Hand sanitiser</span></label>
+          </div>
+        </div>
+        <div class="packing-category" data-category="misc">
+          <h3 class="packing-category-title" data-en="Miscellaneous" data-gr="Διάφορα">Miscellaneous</h3>
+          <div class="packing-items">
+            <label class="packing-item"><input type="checkbox" data-item="reusable-bottle"><span data-en="Reusable water bottle" data-gr="Επαναχρησιμοποιήσιμο μπουκάλι νερού">Reusable water bottle</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="small-backpack"><span data-en="Small day backpack" data-gr="Μικρό σακίδιο ημέρας">Small day backpack</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="snacks-flight"><span data-en="Snacks for the flight" data-gr="Σνακ για την πτήση">Snacks for the flight</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="pesos-cash"><span data-en="Some pesos (cash)" data-gr="Λίγα πέσος (μετρητά)">Some pesos (cash)</span></label>
+            <label class="packing-item"><input type="checkbox" data-item="rain-jacket"><span data-en="Compact rain jacket" data-gr="Συμπαγές αδιάβροχο">Compact rain jacket</span></label>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1042,6 +1173,227 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- SPANISH PHRASE BOOK -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="aztec-divider"></div>
+
+  <section id="phrasebook" class="section phrasebook">
+    <div class="container">
+      <span class="section-emoji">&#128172;</span>
+      <h2 class="section-title" data-en="Spanish Phrase Book" data-gr="Φρασεολόγιο Ισπανικών">Spanish Phrase Book</h2>
+      <p class="section-intro" data-en="Essential phrases for the trip. Tap any card to flip it for a usage tip." data-gr="Βασικές φράσεις για το ταξίδι. Πατήστε οποιαδήποτε κάρτα για να τη γυρίσετε και να δείτε μια συμβουλή χρήσης.">Essential phrases for the trip. Tap any card to flip it for a usage tip.</p>
+
+      <h3 class="phrase-category-title" data-en="Greetings" data-gr="Χαιρετισμοί">Greetings</h3>
+      <div class="phrase-grid">
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">Hola</span>
+              <span class="phrase-phonetic">OH-lah</span>
+              <span class="phrase-translation" data-en="Hello" data-gr="Γεια">Hello</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Works anytime, anywhere. Mexicans greet warmly — always say hola when entering a shop." data-gr="Λειτουργεί πάντα, παντού. Οι Μεξικανοί χαιρετούν εγκάρδια — πείτε πάντα hola μπαίνοντας σε μαγαζί.">Works anytime, anywhere. Mexicans greet warmly — always say hola when entering a shop.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">Buenos dias</span>
+              <span class="phrase-phonetic">BWEH-nos DEE-as</span>
+              <span class="phrase-translation" data-en="Good morning" data-gr="Καλημέρα">Good morning</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Use until about 12pm. Buenas tardes for afternoon, buenas noches for evening." data-gr="Χρησιμοποιήστε μέχρι τις 12. Buenas tardes για το απόγευμα, buenas noches για το βράδυ.">Use until about 12pm. Buenas tardes for afternoon, buenas noches for evening.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">Por favor</span>
+              <span class="phrase-phonetic">por fah-VOR</span>
+              <span class="phrase-translation" data-en="Please" data-gr="Παρακαλώ">Please</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Add to any request to sound polite. Mexicans appreciate courtesy — por favor goes a long way." data-gr="Προσθέστε σε κάθε αίτημα. Οι Μεξικανοί εκτιμούν την ευγένεια — το por favor πάει μακριά.">Add to any request to sound polite. Mexicans appreciate courtesy — por favor goes a long way.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">Gracias</span>
+              <span class="phrase-phonetic">GRAH-see-as</span>
+              <span class="phrase-translation" data-en="Thank you" data-gr="Ευχαριστώ">Thank you</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Say muchas gracias for extra warmth. You'll use this one a hundred times a day." data-gr="Πείτε muchas gracias για περισσότερη ζεστασιά. Θα το χρησιμοποιείτε εκατό φορές τη μέρα.">Say muchas gracias for extra warmth. You'll use this one a hundred times a day.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="phrase-category-title" data-en="Dining" data-gr="Φαγητό">Dining</h3>
+      <div class="phrase-grid">
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">La cuenta, por favor</span>
+              <span class="phrase-phonetic">lah KWEN-tah por fah-VOR</span>
+              <span class="phrase-translation" data-en="The bill, please" data-gr="Τον λογαριασμό, παρακαλώ">The bill, please</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="In Mexico, waiters won't bring the bill until you ask. It's considered rude to rush you." data-gr="Στο Μεξικό, οι σερβιτόροι δεν φέρνουν τον λογαριασμό μέχρι να ζητήσετε. Θεωρείται αγενές να σας βιάζουν.">In Mexico, waiters won't bring the bill until you ask. It's considered rude to rush you.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">Muy rico</span>
+              <span class="phrase-phonetic">mooy REE-koh</span>
+              <span class="phrase-translation" data-en="Very delicious" data-gr="Πολύ νόστιμο">Very delicious</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="The magic words after any meal. The chef or vendor will love hearing this from you." data-gr="Τα μαγικά λόγια μετά από κάθε γεύμα. Ο σεφ ή ο πωλητής θα χαρεί να το ακούσει.">The magic words after any meal. The chef or vendor will love hearing this from you.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">Sin picante</span>
+              <span class="phrase-phonetic">seen pee-KAHN-teh</span>
+              <span class="phrase-translation" data-en="Not spicy" data-gr="Χωρίς καυτερό">Not spicy</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Lenia, this one's for you. Say it before ordering if you want to avoid chilli surprises." data-gr="Λένια, αυτό είναι για σένα. Πες το πριν παραγγείλεις αν θες να αποφύγεις εκπλήξεις με τσίλι.">Lenia, this one's for you. Say it before ordering if you want to avoid chilli surprises.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">Una cerveza, por favor</span>
+              <span class="phrase-phonetic">OO-nah ser-VEH-sah</span>
+              <span class="phrase-translation" data-en="One beer, please" data-gr="Μια μπύρα, παρακαλώ">One beer, please</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Andreas, you'll master this one first. Try a Victoria or Modelo Especial." data-gr="Andreas, αυτό θα το μάθεις πρώτο. Δοκίμασε Victoria ή Modelo Especial.">Andreas, you'll master this one first. Try a Victoria or Modelo Especial.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="phrase-category-title" data-en="Getting Around" data-gr="Μετακίνηση">Getting Around</h3>
+      <div class="phrase-grid">
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">¿Donde esta...?</span>
+              <span class="phrase-phonetic">DOHN-deh es-TAH</span>
+              <span class="phrase-translation" data-en="Where is...?" data-gr="Πού είναι...;">Where is...?</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Follow with the place name. ¿Donde esta el baño? (Where is the bathroom?) is essential." data-gr="Ακολουθήστε με το όνομα του μέρους. ¿Donde esta el baño? (Πού είναι η τουαλέτα;) είναι απαραίτητο.">Follow with the place name. ¿Donde esta el baño? (Where is the bathroom?) is essential.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">¿Cuanto cuesta?</span>
+              <span class="phrase-phonetic">KWAHN-toh KWES-tah</span>
+              <span class="phrase-translation" data-en="How much does it cost?" data-gr="Πόσο κοστίζει;">How much does it cost?</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Essential for markets and street vendors. Point at what you want and ask this." data-gr="Απαραίτητο για αγορές και πλανόδιους. Δείξτε αυτό που θέλετε και ρωτήστε.">Essential for markets and street vendors. Point at what you want and ask this.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">A la izquierda / derecha</span>
+              <span class="phrase-phonetic">ah lah ees-KYER-dah / deh-REH-chah</span>
+              <span class="phrase-translation" data-en="To the left / right" data-gr="Αριστερά / δεξιά">To the left / right</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Useful when people give you directions. Derecho (straight) is the other one to know." data-gr="Χρήσιμο όταν σας δίνουν οδηγίες. Derecho (ευθεία) είναι η άλλη λέξη που χρειάζεστε.">Useful when people give you directions. Derecho (straight) is the other one to know.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">No hablo mucho espanol</span>
+              <span class="phrase-phonetic">noh AH-bloh MOO-choh es-pah-NYOL</span>
+              <span class="phrase-translation" data-en="I don't speak much Spanish" data-gr="Δεν μιλάω πολύ ισπανικά">I don't speak much Spanish</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Say this with a smile and most people will happily switch to slower Spanish or gestures." data-gr="Πείτε το με χαμόγελο και οι περισσότεροι θα μιλήσουν πιο αργά ή θα χρησιμοποιήσουν χειρονομίες.">Say this with a smile and most people will happily switch to slower Spanish or gestures.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="phrase-category-title" data-en="Emergency" data-gr="Έκτακτη Ανάγκη">Emergency</h3>
+      <div class="phrase-grid">
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">Necesito ayuda</span>
+              <span class="phrase-phonetic">neh-seh-SEE-toh ah-YOO-dah</span>
+              <span class="phrase-translation" data-en="I need help" data-gr="Χρειάζομαι βοήθεια">I need help</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Hopefully you won't need this, but it's good to know. Mexicans are incredibly helpful to tourists." data-gr="Ελπίζουμε να μην το χρειαστείτε, αλλά καλό είναι να το ξέρετε. Οι Μεξικανοί είναι απίστευτα εξυπηρετικοί.">Hopefully you won't need this, but it's good to know. Mexicans are incredibly helpful to tourists.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">Llame a un doctor</span>
+              <span class="phrase-phonetic">YAH-meh ah oon dok-TOR</span>
+              <span class="phrase-translation" data-en="Call a doctor" data-gr="Καλέστε γιατρό">Call a doctor</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="The Sofitel concierge can arrange medical help. Emergency number in Mexico: 911." data-gr="Η ρεσεψιόν του Sofitel μπορεί να κανονίσει ιατρική βοήθεια. Αριθμός έκτακτης ανάγκης: 911.">The Sofitel concierge can arrange medical help. Emergency number in Mexico: 911.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">No entiendo</span>
+              <span class="phrase-phonetic">noh en-tee-EN-doh</span>
+              <span class="phrase-translation" data-en="I don't understand" data-gr="Δεν καταλαβαίνω">I don't understand</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Pair with 'mas despacio, por favor' (more slowly, please) and people will repeat patiently." data-gr="Συνδυάστε με 'mas despacio, por favor' (πιο αργά, παρακαλώ) και θα επαναλάβουν υπομονετικά.">Pair with 'mas despacio, por favor' (more slowly, please) and people will repeat patiently.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card" tabindex="0">
+          <div class="phrase-card-inner">
+            <div class="phrase-front">
+              <span class="phrase-spanish">Disculpe</span>
+              <span class="phrase-phonetic">dees-KOOL-peh</span>
+              <span class="phrase-translation" data-en="Excuse me" data-gr="Συγγνώμη">Excuse me</span>
+            </div>
+            <div class="phrase-back">
+              <span class="phrase-tip" data-en="Use to get attention politely or to squeeze past people. Perdón also works." data-gr="Χρησιμοποιήστε για να τραβήξετε ευγενικά την προσοχή ή να περάσετε μέσα από κόσμο. Perdón λειτουργεί επίσης.">Use to get attention politely or to squeeze past people. Perdón also works.</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1744,6 +2096,7 @@
   <!-- ═══════════════════════════════════════ -->
   <footer class="site-footer">
     <p class="footer-signature" id="footerSignature" data-en="Made for the Andreous, with love and too much mezcal." data-gr="Για τους Ανδρέου, με αγάπη και υπερβολικό mezcal.">Made for the Andreous, with love and too much mezcal.</p>
+    <p class="easter-egg-counter" id="easterEggCounter"></p>
   </footer>
 
   <!-- Activity Bar (sticky bottom, live mode only) -->
@@ -1754,6 +2107,16 @@
         <span class="activity-bar-now" id="activityBarNow"></span>
         <span class="activity-bar-next" id="activityBarNext"></span>
       </div>
+    </div>
+  </div>
+
+  <!-- Countdown Celebration Overlay -->
+  <div class="celebration-overlay" id="celebrationOverlay">
+    <div class="celebration-content">
+      <div class="celebration-emoji">&#127881;&#127880;&#9992;&#65039;</div>
+      <h2 class="celebration-title" data-en="It's time! Vamos!" data-gr="Ώρα να φύγουμε! Vamos!">It's time! Vamos!</h2>
+      <p class="celebration-sub" data-en="The Andreou family adventure begins now." data-gr="Η περιπέτεια της οικογένειας Ανδρέου ξεκινά τώρα.">The Andreou family adventure begins now.</p>
+      <button class="celebration-dismiss" id="celebrationDismiss" data-en="Let's Go!" data-gr="Πάμε!">Let's Go!</button>
     </div>
   </div>
 
